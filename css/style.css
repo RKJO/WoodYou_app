@@ -1,3 +1,31 @@
 .social a {
   margin-right: 0.4rem;
   color: #000; }
+
+#home-section {
+  background: url(/img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  min-height: 300px;
+  background-position: bottom; }
+  #home-section .dark-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 300px;
+    background: rgba(0, 0, 0, 0.5); }
+    #home-section .dark-overlay .home-img {
+      max-width: 250px;
+      border: solid;
+      border-color: white; }
+
+@media (max-width: 768px) {
+  #top-bar {
+    text-align: center; }
+    #top-bar .social {
+      text-align: center !important; } }
+@media (max-width: 576px) {
+  #home-section {
+    background-position: top; } }
