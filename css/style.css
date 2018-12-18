@@ -35,15 +35,18 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
-  min-height: 200px;
+  min-height: 10rem;
   background-position: bottom; }
   #materials-header .dark-overlay {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 200px;
+    min-height: 10rem;
     background: rgba(0, 0, 0, 0.5); }
+
+#materials .materials-preview .card-img-top {
+  min-height: 8rem; }
 
 @media (max-width: 768px) {
   #top-bar {
