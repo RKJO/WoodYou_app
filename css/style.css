@@ -45,8 +45,10 @@
     min-height: 10rem;
     background: rgba(0, 0, 0, 0.5); }
 
-#materials .materials-preview .card-img-top {
-  min-height: 8rem; }
+#materials .materials-preview {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+  #materials .materials-preview .card-img-top {
+    min-height: 8rem; }
 
 @media (max-width: 768px) {
   #top-bar {
