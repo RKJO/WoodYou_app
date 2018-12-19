@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Wood You - Nasze realizacje</title>
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <section id="top-bar" class="p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <i class="fas fa-phone"></i> +48 531 356 412
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-envelope-open"></i> biuro@woodyou.waw.pl
+        </div>
+        <div class="col-md-4">
+          <div class="social text-right">
+            <a href="http://m.me/286075128636502" target="_blank" onclick="window.open(this.href,'child','left=1400, top=400,width=500,height=600,resizable=0'); return false;">
+              <i class="fab fa-facebook-messenger fa-lg"></i> Wood You
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" class="logo" alt="" style=" height: 30px">
+        <!-- <h3 class="d-inline align-middle">Wood You</h3> -->
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a class="nav-link active" href="#">Materiały</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#">Nasze realizacje</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="#">Kalkulator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <header id="realizations-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="text-center text-white">
+                  <h1><strong>Nasze realizacje</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+  <!-- SEARCH SECTION -->
+  <section id="search-form" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="home-search overlay p-3 shadow">
+                  <div class="search">
+                    <form action="search.html">
+                      <!-- Form Row 1 -->
+                      <div class="form-row">     
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">City</label>
+                          <input type="text" name="city" class="form-control" placeholder="Wilekość od:">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">City</label>
+                          <input type="text" name="city" class="form-control" placeholder="Wilekość do:">
+                        </div>
+                      </div>
+                      <!-- Form Row 2 -->
+                      <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                          <label class="sr-only">Bedrooms</label>
+                          <select name="bedrooms" class="form-control">
+                            <option selected="true" disabled="disabled">Rodzaj drewna</option>
+                            <option value="modrzew">Modrzew Syberyjski</option>
+                            <option value="bankirai">Bankirai</option>
+                            <option value="marbau">Merbau</option>
+                            <option value="kompozyt">Deska Kompozytowa</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb shadow">
+          <li class="breadcrumb-item">
+            <a href="index.html">
+              <i class="fas fa-home text-secondary"></i> Strona główna</a>
+          </li>
+          <li class="breadcrumb-item active"> Nasze ralizacje</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+   <!-- Listings -->
+   <section id="realizations-listings" class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Listing 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="/img/modrzew.jpg" alt="">
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">12 000 zł</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">Modrzew syberyjski</h4>
+                <p>
+                    <i class="fas fa-map-marker text-secondary"></i> Warszawa, Wilanów</p>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                  <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+                </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-12">
+                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                  <div class="col-12 text-right">Modrzew Syberyjski</div>
+              </div>
+              <hr>
+              <div class="row text-secondary pb-2">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> sierpień 2018</div>
+              </div>
+              <hr>
+              <a href="listing.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Listing 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="/img/modrzew_w.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">10 000 zł</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Modrzew syberyjski</h4>
+                  <p>
+                      <i class="fas fa-map-marker text-secondary"></i> Warszawa, Praga południe</p>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                    <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+                  </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-12">
+                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                    <div class="col-12 text-right">Modrzew Syberyjski</div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                    <i class="fas fa-clock"></i> lipiec 2018</div>
+                </div>
+                <hr>
+                <a href="listing.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+              </div>
+            </div>
+          </div>
+
+        <!-- Listing 3 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="/img/bankirai20.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">20 000 zł</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Bankirai</h4>
+                  <p>
+                      <i class="fas fa-map-marker text-secondary"></i> Łomianki</p>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                    <div class="col-6 text-right">22 m<SUP>2</SUP> </div>
+                  </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-12">
+                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                    <div class="col-12 text-right">Bankirai</div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                    <i class="fas fa-clock"></i> czerwiec 2018</div>
+                </div>
+                <hr>
+                <a href="listing.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#">&laquo;</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">&raquo;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </section>
+
+
+<!-- Footer -->
+  <footer id="main-footer" class="py-2 bg-primary text-white text-center">
+    Copyright &copy;
+    <span class="year"></span> Wood You
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

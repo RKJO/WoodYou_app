@@ -50,6 +50,34 @@
   #materials .materials-preview .card-img-top {
     min-height: 8rem; }
 
+#realizations-header {
+  background: url(/img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  min-height: 10rem;
+  background-position: bottom;
+  z-index: -1; }
+  #realizations-header .dark-overlay {
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 10rem;
+    background: rgba(0, 0, 0, 0.5); }
+
+#realizations-listings .card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+
+#search-form .home-search {
+  background: rgba(255, 255, 255, 0.9);
+  margin-top: -50px; }
+
+#realization-info .card .fotos {
+  max-height: 20rem;
+  object-fit: cover;
+  object-position: 0 0; }
+
 @media (max-width: 768px) {
   #top-bar {
     text-align: center; }
