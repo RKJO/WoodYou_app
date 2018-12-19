@@ -61,20 +61,62 @@
   </nav>
 
   <!-- HOME SECTION -->
-  <header id="materials-header">
-      <div class="dark-overlay py-5">
-        <div class="container py-3">
-            <div class="row">
-              <div class="col-lg-8">
-                <div class="text-center text-white">
-                      <h1><strong>Nasze realizacje</strong></h1>
-                </div>
-              </div>
+  <header id="realizations-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="text-center text-white">
+                  <h1><strong>Nasze realizacje</strong></h1>
             </div>
           </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+  <!-- SEARCH SECTION -->
+  <section id="search-form" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="home-search overlay p-3 shadow">
+                  <div class="search">
+                    <form action="search.html">
+                      <!-- Form Row 1 -->
+                      <div class="form-row">     
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">City</label>
+                          <input type="text" name="city" class="form-control" placeholder="Wilekość od:">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">City</label>
+                          <input type="text" name="city" class="form-control" placeholder="Wilekość do:">
+                        </div>
+                      </div>
+                      <!-- Form Row 2 -->
+                      <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                          <label class="sr-only">Bedrooms</label>
+                          <select name="bedrooms" class="form-control">
+                            <option selected="true" disabled="disabled">Rodzaj drewna</option>
+                            <option value="modrzew">Modrzew Syberyjski</option>
+                            <option value="bankirai">Bankirai</option>
+                            <option value="marbau">Merbau</option>
+                            <option value="kompozyt">Deska Kompozytowa</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+        </div>
       </div>
-    </header>
- 
+    </section>
+
      <!-- Breadcrumb -->
   <section id="bc" class="mt-3">
     <div class="container">
