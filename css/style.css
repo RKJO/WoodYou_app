@@ -66,6 +66,9 @@
     min-height: 10rem;
     background: rgba(0, 0, 0, 0.5); }
 
+#realizations-listings .card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+
 #search-form .home-search {
   background: rgba(255, 255, 255, 0.9);
   margin-top: -50px; }
