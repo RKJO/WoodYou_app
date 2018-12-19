@@ -73,6 +73,11 @@
   background: rgba(255, 255, 255, 0.9);
   margin-top: -50px; }
 
+#realization-info .card .fotos {
+  max-height: 20rem;
+  object-fit: cover;
+  object-position: 0 0; }
+
 @media (max-width: 768px) {
   #top-bar {
     text-align: center; }
