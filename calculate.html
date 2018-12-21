@@ -140,11 +140,69 @@
             <a href="index.html">
               <i class="fas fa-home text-secondary"></i> Strona główna</a>
           </li>
-          <li class="breadcrumb-item active"> Nasze ralizacje</li>
+          <li class="breadcrumb-item active"> Kalkulacja oferty</li>
         </ol>
       </nav>
     </div>
   </section>
+
+  <!-- Calculate info section -->
+
+  <div class="container">
+    <div class="info-box">
+        <div class="row text-right py-4">
+            <div class="col-md-5">
+              <i class="fas fa-calculator text-secondary"></i> Kalkulacja dla tarasu:
+            </div>
+            <div class="col-md-7">
+                45 m<sup>2</sup>, Modzew syberyski, Zabuduwa balkonu
+            </div>
+        </div>
+    </div>
+    <div class="calculate-info">
+        <table class="table table-hover" id="myTable">
+            <thead>
+              <tr>
+                  <th>Produkt</th>
+                  <th>Cena jednostkowa</th>
+                  <th>Koszt</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Drewno Modrzew Syberyski</td>
+                <td>100 zł/m<sup>2</sup></td>
+                <td>4500 zł</td>
+            </tr>
+            <tr>
+                <td>Legary </td>
+                <td>30 zł/mb</td>
+                <td>450 zł</td>
+            </tr>
+            <tr>
+                <td>Wkręty</td>
+                <td>200 zł/op</td>
+                <td>400 zł</td>
+            </tr>
+            <tr>
+                <td>Olej </td>
+                <td>150 zł/szt</td>
+                <td>150 zł</td>
+            </tr>
+            <tr>
+                <td>Montaż</td>
+                <td class="number">120 zł/mb</td>
+                <td>5400 zł</td>
+            </tbody>
+            <tfoot>
+                <td></td>
+                <td> <strong>Suma:</strong></td>
+                <td class="result"></td>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
 
 <!-- Footer -->
   <footer id="main-footer" class="py-2 bg-primary text-white text-center">
