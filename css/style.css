@@ -78,6 +78,30 @@
   object-fit: cover;
   object-position: 0 0; }
 
+#calculate-header {
+  background: url(/img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  min-height: 10rem;
+  background-position: bottom;
+  z-index: -1; }
+  #calculate-header .dark-overlay {
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 10rem;
+    background: rgba(0, 0, 0, 0.5); }
+
+#calculate-form .home-calculate {
+  background: white;
+  margin-top: -50px; }
+  #calculate-form .home-calculate input::placeholder {
+    color: #495057; }
+  #calculate-form .home-calculate .form-control {
+    text-align-last: center; }
+
 @media (max-width: 768px) {
   #top-bar {
     text-align: center; }
