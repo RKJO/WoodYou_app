@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'module_5_new_hope',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': 'postgres',
-        'PASSWORD': 'coderslab',
+        'PASSWORD': 'Arginina1987,
     }
 }
 
