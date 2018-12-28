@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'woodyou_app.wsgi.application'
 DATABASES = {
     'default': {
         'HOST': '127.0.0.1',
-        'NAME': 'module_5_new_hope',
+        'NAME': 'woodyou_db',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': 'postgres',
-        'PASSWORD': 'Arginina1987,
+        'PASSWORD': 'Arginina1987',
     }
 }
 
