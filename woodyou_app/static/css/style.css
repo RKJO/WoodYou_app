@@ -3,9 +3,9 @@
   color: #000; }
 
 #home-section {
-  background: url(/img/background.jpg);
+  background: url(../img/background.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   min-height: 400px;
   background-position: bottom; }
@@ -31,9 +31,9 @@
   text-align: justify; }
 
 #materials-header {
-  background: url(/img/background.jpg);
+  background: url(../img/background.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   min-height: 10rem;
   background-position: bottom; }
@@ -51,9 +51,9 @@
     min-height: 8rem; }
 
 #realizations-header {
-  background: url(/img/background.jpg);
+  background: url(../img/background.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   min-height: 10rem;
   background-position: bottom;
@@ -79,9 +79,9 @@
   object-position: 0 0; }
 
 #calculate-header {
-  background: url(/img/background.jpg);
+  background: url(../img/background.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   min-height: 10rem;
   background-position: bottom;
