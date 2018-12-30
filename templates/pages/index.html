@@ -5,79 +5,71 @@
 {% block content %}
 
 <!-- HOME SECTION -->
-<header id="realizations-header">
-    <div class="dark-overlay py-5">
-      <div class="container py-3">
-        <div class="row">
-          <div class="col-lg-8">
+<header id="home-section">
+  <div class="dark-overlay">
+    <div class="container">
+        <div class="row align-self-center">
+          <div class="col-lg-8 d-none d-lg-block align-self-center">
             <div class="text-center text-white">
-                  <h1><strong>Nasze realizacje</strong></h1>
+                  <h1><strong> Wood You</strong></h1>
+                  <h2>Tarasy i zadaszenia <br>dla Twojego domu</h2>
             </div>
           </div>
-        </div>
-      </div>  
-    </div>
-  </header>
 
-  <!-- SEARCH SECTION -->
-  <section id="search-form" class="py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-              <div class="home-search overlay p-3 shadow">
-                  <div class="search">
-                    <form action="search.html">
-                      <!-- Form Row 1 -->
-                      <div class="form-row">     
-                        <div class="col-md-6 mb-3">
-                          <label class="sr-only">City</label>
-                          <input type="text" name="city" class="form-control" placeholder="Wilekość od:">
-                        </div>
-
-                        <div class="col-md-6 mb-3">
-                          <label class="sr-only">City</label>
-                          <input type="text" name="city" class="form-control" placeholder="Wilekość do:">
-                        </div>
-                      </div>
-                      <!-- Form Row 2 -->
-                      <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                          <label class="sr-only">Bedrooms</label>
-                          <select name="bedrooms" class="form-control">
-                            <option selected="true" disabled="disabled">Rodzaj drewna</option>
-                            <option value="modrzew">Modrzew Syberyjski</option>
-                            <option value="bankirai">Bankirai</option>
-                            <option value="marbau">Merbau</option>
-                            <option value="kompozyt">Deska Kompozytowa</option>
-                          </select>
-                        </div>
-                      </div>
-                      <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>
-                    </form>
-                  </div>
-                </div>
+          <div class="col-lg-4 col-md-12 align-self-center">
+                <img src="img/profile_picture.png" alt="" class="img-fluid rounded-circle home-img">
           </div>
         </div>
       </div>
-    </section>
+  </div>
 
-     <!-- Breadcrumb -->
-  <section id="bc" class="mt-3">
+</header>
+
+<!-- About Section -->
+<section id="info">
+  <div class="container mt-5">
+    <div class="row ">
+      <div class="col-xs-12">
+        <p class="text">Modrzew syberyjski, bangkirai i deska kompozytowa 4DECK to główne produkty z naszej oferty. Własna produkcja i bezpośredni import pozwalają nam zaoferować szeroką gamę produktów w wielu profilach i gatunkach. W Global Biznes znajdziesz deski tarasowe, deski elewacyjne, deski kompozytowe WPC, w stałej ofercie dostępne od ręki są również takie produkty jak tarcica obrzynana i nieobrzynana, fryzy na kantówkę okienną, blaty drewniane, drewno konstrukcyjne a także wkręty, impregnaty i oleje do drewna. Dzięki szerokiej gamie dostępnych gatunków drewna egzotycznego oraz rodzimego takich jak modrzew syberyjski, sosna, bangkirai, keruing, kempas, massaranduba, merbau, garapa, ipe/lapacho, cumaru, mukulungu, thermo drewno, tatajuba, meranti, cedr czerwony czy okoume jesteśmy w stanie zrealizować niemalże każde zamówienie. Obsługujemy zarówno klientów detalicznych, wykonawców, architektów, deweloperów i firmy handlowe. Nasz główny magazyn znajduje się w Koczargach Nowych pod Warszawą, gdzie bezpośrednio mogą Państwo obejrzeć i zakupić towar. Realizujemy wysyłkę naszych produktów na terenie całego świata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--HOME ICON SECTION  -->
+  <section id="home-icons" class="py-5">
     <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb shadow">
-          <li class="breadcrumb-item">
-            <a href="index.html">
-              <i class="fas fa-home text-secondary"></i> Strona główna</a>
-          </li>
-          <li class="breadcrumb-item active"> Nasze ralizacje</li>
-        </ol>
-      </nav>
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-cog fa-3x mb-2"></i>
+          <h3>Turning Gears</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-cloud fa-3x mb-2"></i>
+          <h3>Sending Data</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-cart-plus fa-3x mb-2"></i>
+          <h3>Making Money</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-   <!-- Listings -->
-   <section id="realizations-listings" class="py-5">
+<!-- Services -->
+<section class="content-section  text-center" id="services">
+  <div class="container">
+    <div class="jumbotron text-center bg-secondary text-white py-3">
+      <h1 class="h3">Nasze ostatnie realizacje:</h1>
+    </div>
+  </div>
+</section>
+
+ <!-- Listings -->
+ <section id="listings" class="py-5">
     <div class="container">
       <div class="row">
         <!-- Listing 1 -->
@@ -191,28 +183,6 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#">&laquo;</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">&raquo;</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
       </div>
     </div>
   </section>
