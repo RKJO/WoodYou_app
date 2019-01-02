@@ -22,13 +22,17 @@ class Category(AddAndCreate):
 
     class Meta:
         verbose_name = "Kategoria"
+        verbose_name_plural = "Kategorie"
+
+    def __str__(self):
+        return self.name
 
     def __unicode__(self):
         return self.name
 
 
 class Product(AddAndCreate):
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa produktu', max_length=100)
     price_lm = models.DecimalField('Cena mb (PLN)', max_digits=5, decimal_places=2)
     price_m2 = models.DecimalField('Cena m^2 (PLN)', max_digits=5, decimal_places=2)
@@ -48,12 +52,15 @@ class Product(AddAndCreate):
         verbose_name = "Produkt"
         verbose_name_plural = "Produkty"
 
+    def __str__(self):
+        return self.name
+
     def __unicode__(self):
         return self.name
 
 
 class Material(AddAndCreate):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa Materiału', max_length=120)
     price = models.DecimalField('Cena (PLN)', max_digits=5, decimal_places=2)
     description = models.TextField('Opis Materiału', blank=True)
@@ -66,6 +73,9 @@ class Material(AddAndCreate):
     class Meta:
         verbose_name = "Materiał"
         verbose_name_plural = "Materiały"
+    
+    def __str__(self):
+        return self.name
 
     def __unicode__(self):
         return self.name
