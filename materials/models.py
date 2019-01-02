@@ -38,7 +38,7 @@ class Product(AddAndCreate):
     price_m2 = models.DecimalField(verbose_name=u'Cena m² (PLN)', max_digits=5, decimal_places=2)
     thickness = models.IntegerField('Gruboość (mm)')
     width = models.IntegerField('Szerokość (mm)')
-    weight = models.DecimalField('Waga', max_digits=5, decimal_places=2)
+    weight = models.DecimalField('Waga', max_digits=5, decimal_places=2, blank=True)
     material = models.CharField('Materiał', max_length=100)
     kind = models.CharField('Gatunek', max_length=100, blank=True)
     description = models.TextField('Opis produktu', blank=True)
@@ -60,7 +60,7 @@ class Product(AddAndCreate):
 
 
 class Material(AddAndCreate):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
+    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa Materiału', max_length=120)
     price = models.DecimalField('Cena (PLN)', max_digits=5, decimal_places=2)
     description = models.TextField('Opis Materiału', blank=True)
