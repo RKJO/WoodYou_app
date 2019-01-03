@@ -1,4 +1,4 @@
-# Real_estate_application
+# Wood You App
 
 An app for company that sells and builds wooden structures using in Django
 
