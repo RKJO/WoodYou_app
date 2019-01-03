@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | Materiały{% endblock %}
+
+{% block content %}
+
+<!-- HOME SECTION -->
+<header id="materials-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="text-center text-white">
+                    <h1><strong>Materiały</strong></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </header>
+
+   <!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb shadow">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home text-secondary"></i> Strona główna</a>
+        </li>
+        <li class="breadcrumb-item active"> Materiały</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Items -->
+<section class="content-section" id="materials">
+  <div class="container">
+    {% if products %}
+      {% for product_category in products_categories %}
+        {% for product in products %}
+          {% if product.category_name == product_category %}
+            <div class="content-section-heading">
+              <h4 class="p-3 shadow-sm bg-light">{{product_category.name}}</h4>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-4 col-lg-3 mb-4">
+                <a href="bankirai.html">
+                  <div class="card materials-preview">
+                    <img class="card-img-top" src="{{product.photo_main.url}}" alt="">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-secondary text-white">
+                          <div class="price">
+                            <div class='m-1'>{{product.price_lm}} PLN / mb</div>
+                            <div>{{product.price_m2}} PLN / m<sup>2</sup></div>
+                          </div>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                      <!-- <div class="listing-heading text-center">
+                        <span class="text-secondary">Bankirai</span> -->
+                      <div class="btn btn-secondary btn-block">{{product.name}}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+    <hr>
+    {% if materials %}
+      {% for material_category in materials_categories %}
+        {% for material in materials %}
+          {% if material.category_name == material_category %}
+            <div class="content-section-heading">
+              <h4 class="p-3 shadow-sm bg-light">{{material_category.name}}</h4>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-lg-3 mb-4">
+                <a href="bankirai.html">
+                  <div class="card materials-preview">
+                    <img class="card-img-top" src="{{material.photo_main.url}}" alt="">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-secondary text-white">
+                          <div class="price">
+                            <div class='m-1'>{{material.price}} PLN / op</div>
+                          </div>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                      <!-- <div class="listing-heading text-center">
+                        <span class="text-secondary">Bankirai</span> -->
+                      <div class="btn btn-secondary btn-block">{{material.name}}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+    
+  </div>
+</section>
+
+{% endblock %}
