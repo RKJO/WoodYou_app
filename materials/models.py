@@ -15,14 +15,30 @@ class AddAndCreate(models.Model):
     class Meta:
         abstract = True
 
-
 class Category(AddAndCreate):
     name = models.CharField('Nazwa Kategorii', max_length=100)
     description = models.TextField(blank=True)
 
     class Meta:
-        verbose_name = "Kategoria"
-        verbose_name_plural = "Kategorie"
+        abstract = True
+
+class ProductCategory(Category):
+
+    class Meta:
+        verbose_name = "Kategoria Produktu"
+        verbose_name_plural = "Kategorie Produktów"
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+class MaterialCategory(Category):
+
+    class Meta:
+        verbose_name = "Kategoria Materiału"
+        verbose_name_plural = "Kategorie Materiałów"
 
     def __str__(self):
         return self.name
@@ -32,7 +48,7 @@ class Category(AddAndCreate):
 
 
 class Product(AddAndCreate):
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
+    category_name = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa produktu', max_length=100)
     price_lm = models.DecimalField('Cena mb (PLN)', max_digits=5, decimal_places=2)
     price_m2 = models.DecimalField(verbose_name=u'Cena m² (PLN)', max_digits=5, decimal_places=2)
@@ -60,7 +76,7 @@ class Product(AddAndCreate):
 
 
 class Material(AddAndCreate):
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria')
+    category_name = models.ForeignKey(MaterialCategory, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa Materiału', max_length=120)
     price = models.DecimalField('Cena (PLN)', max_digits=5, decimal_places=2)
     description = models.TextField('Opis Materiału', blank=True)

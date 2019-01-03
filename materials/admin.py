@@ -1,15 +1,24 @@
 from django.contrib import admin
 
-from .models import Category, Product, Material
+from .models import ProductCategory, MaterialCategory, Product, Material
 
-class CategoryAdmin(admin.ModelAdmin):
+class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id',)
     list_filter = ('id', 'name')
     list_editable = ('name',)
     list_per_page = 25
 
-admin.site.register(Category, CategoryAdmin)
+admin.site.register(ProductCategory, ProductCategoryAdmin)
+
+class MaterialCategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('id',)
+    list_filter = ('id', 'name')
+    list_editable = ('name',)
+    list_per_page = 25
+
+admin.site.register(MaterialCategory, MaterialCategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price_lm', 'price_m2', 'category_name')
