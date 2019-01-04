@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | Realizacje{% endblock %}
+
+{% block content %}
+
+  <!-- HOME SECTION -->
+  <header id="realizations-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="text-center text-white">
+                  <h1><strong>Nasze realizacje</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+  <!-- SEARCH SECTION -->
+  <section id="search-form" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="home-search overlay p-3 shadow">
+                  <div class="search">
+                    <form action="search.html">
+                      <!-- Form Row 1 -->
+                      <div class="form-row">     
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">Powierzchnia od:</label>
+                          <input type="text" name="area_from" class="form-control" placeholder="Powierzchnia od:">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          <label class="sr-only">Powierzchnia do:</label>
+                          <input type="text" name="area_to" class="form-control" placeholder="Powierzchnia do:">
+                        </div>
+                      </div>
+                      <!-- Form Row 2 -->
+                      <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                          <label class="sr-only">Rodzaj drewna</label>
+                          <select name="wood_type" class="form-control">
+                            <option selected="true" disabled="disabled">Rodzaj drewna</option>
+                            <option value="modrzew">Modrzew Syberyjski</option>
+                            <option value="bankirai">Bankirai</option>
+                            <option value="marbau">Merbau</option>
+                            <option value="kompozyt">Deska Kompozytowa</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb shadow">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home text-secondary"></i> Strona główna</a>
+          </li>
+          <li class="breadcrumb-item active"> Nasze ralizacje</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+   <!-- Listings -->
+   <section id="realizations-listings" class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Listing 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="/img/modrzew.jpg" alt="">
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">12 000 zł</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">Modrzew syberyjski</h4>
+                <p>
+                    <i class="fas fa-map-marker text-secondary"></i> Warszawa, Wilanów</p>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                  <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+                </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-12">
+                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                  <div class="col-12 text-right">Modrzew Syberyjski</div>
+              </div>
+              <hr>
+              <div class="row text-secondary pb-2">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> sierpień 2018</div>
+              </div>
+              <hr>
+              <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Listing 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="/img/modrzew_w.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">10 000 zł</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Modrzew syberyjski</h4>
+                  <p>
+                      <i class="fas fa-map-marker text-secondary"></i> Warszawa, Praga południe</p>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                    <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+                  </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-12">
+                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                    <div class="col-12 text-right">Modrzew Syberyjski</div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                    <i class="fas fa-clock"></i> lipiec 2018</div>
+                </div>
+                <hr>
+                <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+              </div>
+            </div>
+          </div>
+
+        <!-- Listing 3 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="/img/bankirai20.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">20 000 zł</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Bankirai</h4>
+                  <p>
+                      <i class="fas fa-map-marker text-secondary"></i> Łomianki</p>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                    <div class="col-6 text-right">22 m<SUP>2</SUP> </div>
+                  </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-12">
+                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                    <div class="col-12 text-right">Bankirai</div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                    <i class="fas fa-clock"></i> czerwiec 2018</div>
+                </div>
+                <hr>
+                <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#">&laquo;</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">&raquo;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
