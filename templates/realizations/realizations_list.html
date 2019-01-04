@@ -78,145 +78,98 @@
     </div>
   </section>
 
-   <!-- Listings -->
+   <!-- Realizations -->
    <section id="realizations-listings" class="py-5">
     <div class="container">
       <div class="row">
-        <!-- Listing 1 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="/img/modrzew.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">12 000 zł</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">Modrzew syberyjski</h4>
-                <p>
-                    <i class="fas fa-map-marker text-secondary"></i> Warszawa, Wilanów</p>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Powierzchnia:</div>
-                  <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+        {% if realizations %}
+          {% for realization in realizations %}
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card listing-preview">
+                <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
+                <div class="card-img-overlay">
+                  <h2>
+                    <span class="badge badge-secondary text-white">{{realization.cost}} zł</span>
+                  </h2>
                 </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-12">
-                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
-                  <div class="col-12 text-right">Modrzew Syberyjski</div>
-              </div>
-              <hr>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> sierpień 2018</div>
-              </div>
-              <hr>
-              <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Listing 2 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card listing-preview">
-              <img class="card-img-top" src="/img/modrzew_w.jpg" alt="">
-              <div class="card-img-overlay">
-                <h2>
-                  <span class="badge badge-secondary text-white">10 000 zł</span>
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class="listing-heading text-center">
-                  <h4 class="text-primary">Modrzew syberyjski</h4>
-                  <p>
-                      <i class="fas fa-map-marker text-secondary"></i> Warszawa, Praga południe</p>
-                </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
-                    <div class="col-6 text-right">15 m<SUP>2</SUP> </div>
+                <div class="card-body">
+                  <div class="listing-heading text-center">
+                    <h4 class="text-primary">{{realization.name}}</h4>
+                    <p>
+                        <i class="fas fa-map-marker text-secondary"></i> {{realization.location}}</p>
                   </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-12">
-                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
-                    <div class="col-12 text-right">Modrzew Syberyjski</div>
-                </div>
-                <hr>
-                <div class="row text-secondary pb-2">
-                  <div class="col-6">
-                    <i class="fas fa-clock"></i> lipiec 2018</div>
-                </div>
-                <hr>
-                <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
-              </div>
-            </div>
-          </div>
-
-        <!-- Listing 3 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card listing-preview">
-              <img class="card-img-top" src="/img/bankirai20.jpg" alt="">
-              <div class="card-img-overlay">
-                <h2>
-                  <span class="badge badge-secondary text-white">20 000 zł</span>
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class="listing-heading text-center">
-                  <h4 class="text-primary">Bankirai</h4>
-                  <p>
-                      <i class="fas fa-map-marker text-secondary"></i> Łomianki</p>
-                </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-th-large"></i> Powierzchnia:</div>
-                    <div class="col-6 text-right">22 m<SUP>2</SUP> </div>
+                  <hr>
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                      <div class="col-6 text-right">{{realization.area}} m<SUP>2</SUP> </div>
+                    </div>
+                  <div class="row py-2 text-secondary">
+                    <div class="col-12">
+                      <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                      <div class="col-12 text-right">{{realization.used_wood}}</div>
                   </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-12">
-                    <i class="fas fa-tree"></i> Rodzaj drewna:</div>
-                    <div class="col-12 text-right">Bankirai</div>
+                  <hr>
+                  <div class="row text-secondary pb-2">
+                    <div class="col-6">
+                      <i class="fas fa-clock"></i> {{realization.realization_date}}</div>
+                  </div>
+                  <hr>
+                  <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
                 </div>
-                <hr>
-                <div class="row text-secondary pb-2">
-                  <div class="col-6">
-                    <i class="fas fa-clock"></i> czerwiec 2018</div>
-                </div>
-                <hr>
-                <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
               </div>
             </div>
-          </div>
+          {% endfor %}
+        {% endif %}
 
-          <div class="row">
-            <div class="col-md-12">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#">&laquo;</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">&raquo;</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
       </div>
     </div>
   </section>
 
-{% endblock %}
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          {% if realizations.has_other_pages %}
+            <ul class="pagination">
+              {% if realizations.has_previous %}
+                <li class="page-item ">
+                    <a class="page-link" href="?page={{realizations.previous_page_number}}">&laquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link">&laquo;</a>
+                </li>
+              {% endif %}
+
+              {% for i in realizations.paginator.page_range %}
+                {% if realizations.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link" >{{i}}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{i}}">{{i}}</a>
+                    </li>
+                {% endif %}
+              {% endfor %}
+
+              {% if realizations.has_next%}
+                <li class="page-item ">
+                <a class="page-link" href="?page={{realizations.next_page_number}}">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link">&raquo;</a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
