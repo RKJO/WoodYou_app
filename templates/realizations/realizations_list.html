@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block title %} | Realizacje{% endblock %}
 
@@ -89,7 +90,7 @@
                 <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
                 <div class="card-img-overlay">
                   <h2>
-                    <span class="badge badge-secondary text-white">{{realization.cost}} zł</span>
+                    <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
                   </h2>
                 </div>
                 <div class="card-body">
