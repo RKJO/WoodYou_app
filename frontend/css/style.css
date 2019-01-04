@@ -2,8 +2,11 @@
   margin-right: 0.4rem;
   color: #000; }
 
+.logo {
+  max-height: 3rem; }
+
 #home-section {
-  background: url(../img/background.jpg);
+  background: url(/img/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
