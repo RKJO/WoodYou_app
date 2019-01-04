@@ -2,6 +2,9 @@
   margin-right: 0.4rem;
   color: #000; }
 
+.logo {
+  max-height: 2.2rem; }
+
 #home-section {
   background: url(../img/background.jpg);
   background-repeat: no-repeat;
