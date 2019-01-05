@@ -87,8 +87,8 @@ class Material(AddAndCreate):
     photo_5 = models.ImageField('Obraz 5', upload_to=get_upload_path, blank=True)
 
     class Meta:
-        verbose_name = "Materiał"
-        verbose_name_plural = "Materiały"
+        verbose_name = "Akcesoria"
+        verbose_name_plural = "Akcesoria"
     
     def __str__(self):
         return self.name

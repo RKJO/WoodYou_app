@@ -41,13 +41,16 @@
   <div class="container">
     {% if products %}
       {% for product_category in products_categories %}
+        {%if product_category.product_set.all %}
+          <div class="content-section-heading">
+            <h4 class="p-3 shadow-sm bg-light">{{product_category.name}}</h4>
+          </div>
+          <div class="row">
+        {% endif %}
+
         {% for product in products %}
           {% if product.category_name == product_category %}
-            <div class="content-section-heading">
-              <h4 class="p-3 shadow-sm bg-light">{{product_category.name}}</h4>
-            </div>
             
-            <div class="row">
               <div class="col-md-4 col-lg-3 mb-4">
                 <a href="bankirai.html">
                   <div class="card materials-preview">
@@ -68,20 +71,24 @@
                   </div>
                 </a>
               </div>
-            </div>
           {% endif %}
         {% endfor %}
-      {% endfor %}
+        </div>
+
+        {% endfor %}
     {% endif %}
     <hr>
     {% if materials %}
       {% for material_category in materials_categories %}
+        {%if material_category.material_set.all %}
+          <div class="content-section-heading">
+            <h4 class="p-3 shadow-sm bg-light">{{material_category.name}}</h4>
+          </div>
+          <div class="row">
+        {% endif %}
+      
         {% for material in materials %}
           {% if material.category_name == material_category %}
-            <div class="content-section-heading">
-              <h4 class="p-3 shadow-sm bg-light">{{material_category.name}}</h4>
-            </div>
-            <div class="row">
               <div class="col-md-4 col-lg-3 mb-4">
                 <a href="bankirai.html">
                   <div class="card materials-preview">
@@ -101,9 +108,9 @@
                   </div>
                 </a>
               </div>
-            </div>
           {% endif %}
         {% endfor %}
+        </div>
       {% endfor %}
     {% endif %}
     
