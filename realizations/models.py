@@ -1,6 +1,7 @@
 from django.db import models
-from materials.models import AddAndCreate, Product, Material
+from materials.models import Product, Material
 from calculations.models import Assembly
+from categories.models import AddAndCreate
 import os
 
 def get_upload_realization_path(self, filename):

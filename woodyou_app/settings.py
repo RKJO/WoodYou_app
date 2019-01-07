@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'materials.apps.MaterialsConfig',
     'realizations.apps.RealizationsConfig',
     'calculations.apps.CalculationsConfig',
+    'categories.apps.CategoriesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

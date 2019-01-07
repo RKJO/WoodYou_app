@@ -1,51 +1,10 @@
 from django.db import models
 from datetime import date
 import os
+from categories.models import AddAndCreate, ProductCategory, MaterialCategory
 
 def get_upload_path(self, filename):
         return os.path.join("photos/{}/{}".format(self.category_name, self.name), filename)
-
-class AddAndCreate(models.Model):
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
-
-    def get_date(self):
-        return self.created_at, self.created_at
-
-    class Meta:
-        abstract = True
-
-class Category(AddAndCreate):
-    name = models.CharField('Nazwa Kategorii', max_length=100)
-    description = models.TextField(blank=True)
-
-    class Meta:
-        abstract = True
-
-class ProductCategory(Category):
-
-    class Meta:
-        verbose_name = "Kategoria Produktu"
-        verbose_name_plural = "Kategorie Produktów"
-
-    def __str__(self):
-        return self.name
-
-    def __unicode__(self):
-        return self.name
-
-class MaterialCategory(Category):
-
-    class Meta:
-        verbose_name = "Kategoria Materiału"
-        verbose_name_plural = "Kategorie Materiałów"
-
-    def __str__(self):
-        return self.name
-
-    def __unicode__(self):
-        return self.name
-
 
 class Product(AddAndCreate):
     category_name = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, verbose_name='Kategoria')
