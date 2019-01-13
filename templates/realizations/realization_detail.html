@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} | {{ realization.name }}{% endblock %}
+
+{% block content %}
+
+  <!-- HOME SECTION -->
+  <header id="realizations-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col">
+            <div class="text-center text-white">
+              <h1>{{ realization.name }}</h1>
+              <p>
+                  <i class="fas fa-map-marker text-secondary"></i> {{realization.location }}</p>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+     <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb shadow">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home text-secondary"></i> Strona główna</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'realizacje' %}">
+              <i class="text-secondary"></i> Nasze ralizacje</a>
+          <li class="breadcrumb-item active"> {{ realization.name }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id='realization-info' class="mt-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header">
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                <div class="col-6 text-right">{{ realization.area }} m<SUP>2</SUP> </div>
+              </div>
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                <div class="col-6 text-right">{{ realization.used_wood }}</div>
+              </div>
+              {% if realization.used_products1 %}
+                <div class="row py-1 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-tree"></i> Wykorzystane produkty:</div>
+                  <div class="col-6 text-right">{{ realization.used_products }}</div>
+                  {% if ralization.used_products2.name %}
+                    <div class="col-6 text-right">{{ realization.used_products }}</div>
+
+                  {% endif %}
+
+                </div>
+              {% endif %}
+
+
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                <div class="col-6 text-right">{{ realization.used_wood }}</div>
+              </div>
+
+
+              <hr>
+              <div class="row text-secondary mb-1">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> Termin relizacji</div>
+                  <div class="col-6 text-right">{{ realization.realization_date }}</div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="row text-secondary pb-2">
+                <div class="col">
+                  <i class="fas fa-file-alt mb-4"></i> Opis realizacji
+                  <p class="card-text"> {{ realization.description }} </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card shadow-lg">
+            <img src="img/modrzew_w.jpg" alt="" class="fotos">
+            <div class="row tumbs m-3">
+              <div class="col-md-3">
+                <div class="card">
+                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
+                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
+                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
+                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
+                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>  
+  </section>
+
+  {% endblock %}
