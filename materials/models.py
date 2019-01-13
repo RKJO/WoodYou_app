@@ -17,6 +17,7 @@ class Product(AddAndCreate):
     material = models.CharField('Materiał', max_length=100)
     kind = models.CharField('Gatunek', max_length=100, blank=True)
     description = models.TextField('Opis produktu', blank=True)
+    used_for_calculate = models.BooleanField('Pokaż w kalkulatorze', default=True)
     photo_main = models.ImageField('Obraz gółwny', upload_to=get_upload_path)
     photo_2 = models.ImageField('Obraz 2', upload_to=get_upload_path, blank=True)
     photo_3 = models.ImageField('Obraz 3', upload_to=get_upload_path, blank=True)
@@ -28,7 +29,7 @@ class Product(AddAndCreate):
         verbose_name_plural = "Produkty"
 
     def __str__(self):
-        return self.name
+        return self.name, self.category_name
 
     def __unicode__(self):
         return self.name
