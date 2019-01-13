@@ -13,7 +13,7 @@ class Product(AddAndCreate):
     price_m2 = models.DecimalField(verbose_name=u'Cena m² (PLN)', max_digits=5, decimal_places=2)
     thickness = models.IntegerField('Gruboość (mm)')
     width = models.IntegerField('Szerokość (mm)')
-    weight = models.DecimalField('Waga', max_digits=5, decimal_places=2, blank=True)
+    weight = models.DecimalField('Waga', max_digits=5, decimal_places=2, blank=True, null=True)
     material = models.CharField('Materiał', max_length=100)
     kind = models.CharField('Gatunek', max_length=100, blank=True)
     description = models.TextField('Opis produktu', blank=True)
