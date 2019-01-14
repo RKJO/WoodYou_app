@@ -163,4 +163,43 @@
     </div>  
   </section>
 
+  <section class="used-products-section" id="used-products">
+      <div class="container">
+          {% if products %}
+            <div class="content-section-heading">
+              <h4 class="p-3 shadow-sm bg-light"> Wykorzystane materiały</h4>
+            </div>
+            <div class="row">
+          {% endif%} 
+
+            {% for product in products %}
+              {% if product %}  
+              <div class="col-md-4 col-lg-3 mb-4">
+                <a href="#" class="hoverable">
+                  <div class="card materials-preview">
+                    <img class="card-img-top" src="{{product.photo_main.url}}" alt="">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-secondary text-white">
+                          <div class="price">
+                            {% if product.price_lm %}
+                            <div class='m-1'>{{product.price_lm}} PLN / mb</div>
+                            <div>{{product.price_m2}} PLN / m<sup>2</sup></div>
+                            {% else %}
+                            <div class='m-1'>{{product.price }} PLN / op</div>
+                            {% endif %}
+                          </div>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                      <div class="btn btn-secondary btn-block">{{product.name}}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>            
+      </div>
+  </section>
+
   {% endblock %}
