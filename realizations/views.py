@@ -25,12 +25,13 @@ class RealizationDetailView(View):
     def get(self, request, realization_id):
 
         realization = get_object_or_404(Ralization, pk=realization_id)
+        photos = [realization.photo_2, realization.photo_3 ,realization.photo_4, realization.photo_5]
         products = [realization.used_products1, realization.used_products2, realization.used_materials1, realization.used_materials2, realization.used_materials3]
 
         context = {
             'realization' : realization,
-            'thumbnails' : [realization.photo_2, realization.photo_3 ,realization.photo_4, realization.photo_5],
-            'products' : [product for product in products if product] ,
+            'thumbnails' : [thumbnail for thumbnail in photos if thumbnail],
+            'products' : [product for product in products if product],
         }
 
         return TemplateResponse(request, 'realizations/realization_detail.html', context)
