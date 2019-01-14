@@ -45,8 +45,8 @@
   <section id='realization-info' class="mt-2">
     <div class="container">
       <div class="row">
-        <div class="col-md-7">
-          <div class="card">
+        <div class="col-lg-7">
+          <div class="card my-2">
             <div class="card-header">
               <div class="row py-1 text-secondary">
                 <div class="col-6">
@@ -58,31 +58,69 @@
                   <i class="fas fa-tree"></i> Rodzaj drewna:</div>
                 <div class="col-6 text-right">{{ realization.used_wood }}</div>
               </div>
-              {% if realization.used_products1 %}
-                <div class="row py-1 text-secondary">
+
+              {% if realization.used_products1 or realization.used_products2 %} 
+                <div class="row">
                   <div class="col-6">
-                    <i class="fas fa-tree"></i> Wykorzystane produkty:</div>
-                  <div class="col-6 text-right">{{ realization.used_products }}</div>
-                  {% if ralization.used_products2.name %}
-                    <div class="col-6 text-right">{{ realization.used_products }}</div>
-
-                  {% endif %}
-
+                    <div class="row py-1 text-secondary">
+                      <div class="col">
+                        <i class="fas fa-hammer"></i> Wykorzystane produkty:
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">  
+                    <div class="row py-1 text-secondary">
+                      {% if realization.used_products1 %}
+                        <div class="col-12 text-right">{{ realization.used_products1.name }}</div>
+                      {% endif %}
+                      {% if realization.used_products2 %}
+                        <div class="col-12 text-right">{{ realization.used_products2.name }}</div>
+                      {% endif %}
+                    </div>
+                  </div> 
                 </div>
               {% endif %}
 
-
+              {% if realization.used_materials1 or realization.used_materials2 or realization.used_materials3 %}
+              <div class="row">
+                <div class="col-6">
+                  <div class="row py-1 text-secondary">
+                    <div class="col">
+                      <i class="fas fa-plus-square"></i> Wykorzystane akcesoria:
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">  
+                  <div class="row py-1 text-secondary">
+                    {% if realization.used_materials1 %}
+                      <div class="col-12 text-right">{{ realization.used_materials1.name }}</div>
+                    {% endif %}
+                    {% if realization.used_materials2 %}
+                      <div class="col-12 text-right">{{ realization.used_materials2.name }}</div>
+                    {% endif %}
+                    {% if realization.used_materials3 %}
+                      <div class="col-12 text-right">{{ realization.used_materials3.name }}</div>
+                    {% endif %}
+                  </div>
+                </div> 
+              </div>
+              {% endif %}
+              <hr>
               <div class="row py-1 text-secondary">
                 <div class="col-6">
-                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
-                <div class="col-6 text-right">{{ realization.used_wood }}</div>
+                    <i class="fas fa-money-bill-wave"></i> Koszt realizacji:</div>
+                <div class="col-6 text-right">{{ realization.cost }} zł</div>
               </div>
-
-
               <hr>
+
               <div class="row text-secondary mb-1">
                 <div class="col-6">
-                  <i class="fas fa-clock"></i> Termin relizacji</div>
+                  <i class="fas fa-clock"></i> Czas relizacji</div>
+                  <div class="col-6 text-right">{{ realization.realization_time }} dni</div>
+              </div>
+              <div class="row text-secondary mb-1">
+                <div class="col-6">
+                  <i class="fas fa-calendar-alt"></i> Termin relizacji</div>
                   <div class="col-6 text-right">{{ realization.realization_date }}</div>
               </div>
             </div>
@@ -98,41 +136,29 @@
 
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="card shadow-lg">
-            <img src="img/modrzew_w.jpg" alt="" class="fotos">
-            <div class="row tumbs m-3">
-              <div class="col-md-3">
-                <div class="card">
-                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
-                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
+
+        <!-- Images -->
+        <div class="col-lg-5">
+          <div class="card shadow-lg my-2">
+            <a href="{{ realization.photo_main.url }}" data-lightbox="realization-images" >
+              <img src="{{ realization.photo_main.url }}" alt="" class="fotos card-img-top">
+            </a>
+            {% if thumbnails %}
+              {% for thumbnail in thumbnails %}
+                {% if thumbnail %}
+                <div class="row tumbs card-deck m-3">  
+                  <div class="col-md-3 col-sm-12">
+                    <a href="{{ thumbnail.url }}" data-lightbox="realization-images">
+                      <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
                   </a>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card">
-                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
-                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card">
-                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
-                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card">
-                  <a href="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" data-lightbox="home-images">
-                    <img src="img/materials/deski/2_4_1_Modrzew_Syberysjki_24x140/deska_tarasowa_modrzew_syberyjski_24x140_czolo_strona1.jpg" alt="" class="img-fluid">
-                  </a>
-                </div>
-              </div>
+                {%endif%}
+              {% endfor %}
+              
             </div>
+            {% endif %}
           </div>
-          </div>
+        </div>
       </div>
     </div>  
   </section>
