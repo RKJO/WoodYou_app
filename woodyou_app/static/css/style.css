@@ -76,10 +76,17 @@
   background: rgba(255, 255, 255, 0.9);
   margin-top: -50px; }
 
-#realization-info .card .fotos {
-  max-height: 20rem;
-  object-fit: cover;
-  object-position: 0 0; }
+#realization-info {
+  min-height: 43rem; }
+  #realization-info .img-thumbnail {
+    width: 9rem;
+    height: 7rem;
+    object-fit: cover; }
+
+#used-products .materials-preview {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+  #used-products .materials-preview .card-img-top {
+    min-height: 8rem; }
 
 #calculate-header {
   background: url(../img/background.jpg);
@@ -109,7 +116,27 @@
   #top-bar {
     text-align: center; }
     #top-bar .social {
-      text-align: center !important; } }
+      text-align: center !important; }   
+    #realization-info .img-thumbnail {
+        width: 24rem;
+        height: 17rem;
+        margin-top: 0.5rem;
+        object-fit: cover; }
+        
+      #realization-info .card .fotos {
+        padding: 0.25rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        width: 24rem;
+        height: 17rem;
+        margin-top: 0.5rem;
+        margin-left: 2rem;
+        margin-bottom: -1rem;
+        object-fit: cover;  }
+    
+    }
 @media (max-width: 576px) {
   #home-section {
-    background-position: top; } }
+    background-position: top; }}
+  
