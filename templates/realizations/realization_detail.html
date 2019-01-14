@@ -46,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7">
-          <div class="card my-2">
+          <div class="card shadow-sm my-2">
             <div class="card-header">
               <div class="row py-1 text-secondary">
                 <div class="col-6">
@@ -144,14 +144,15 @@
               <img src="{{ realization.photo_main.url }}" alt="" class="fotos card-img-top">
             </a>
             {% if thumbnails %}
+            <div class="row tumbs card-deck m-3">  
+
               {% for thumbnail in thumbnails %}
                 {% if thumbnail %}
-                <div class="row tumbs card-deck m-3">  
                   <div class="col-md-3 col-sm-12">
                     <a href="{{ thumbnail.url }}" data-lightbox="realization-images">
                       <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
                   </a>
-                </div>
+                  </div>
                 {%endif%}
               {% endfor %}
               
@@ -166,7 +167,7 @@
   <section class="used-products-section" id="used-products">
       <div class="container">
           {% if products %}
-            <div class="content-section-heading">
+            <div class="content-section-heading my-3">
               <h4 class="p-3 shadow-sm bg-light"> Wykorzystane materiały</h4>
             </div>
             <div class="row">
