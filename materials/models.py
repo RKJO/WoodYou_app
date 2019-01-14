@@ -29,7 +29,7 @@ class Product(AddAndCreate):
         verbose_name_plural = "Produkty"
 
     def __str__(self):
-        return self.name, self.category_name
+        return self.name
 
     def __unicode__(self):
         return self.name
