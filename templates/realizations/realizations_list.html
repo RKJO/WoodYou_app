@@ -29,29 +29,32 @@
           <div class="col-md-12">
               <div class="home-search overlay p-3 shadow">
                   <div class="search">
-                    <form action="search.html">
+                    <form action="{% url 'realizacje' %}">
                       <!-- Form Row 1 -->
                       <div class="form-row">     
                         <div class="col-md-6 mb-3">
                           <label class="sr-only">Powierzchnia od:</label>
-                          <input type="text" name="area_from" class="form-control" placeholder="Powierzchnia od:">
+                          <input type="text" name="powierzchnia_od" class="form-control" placeholder="Powierzchnia od:" value="{{ values.powierzchnia_od }}" >
                         </div>
 
                         <div class="col-md-6 mb-3">
                           <label class="sr-only">Powierzchnia do:</label>
-                          <input type="text" name="area_to" class="form-control" placeholder="Powierzchnia do:">
+                          <input type="text" name="powierzchnia_do" class="form-control" placeholder="Powierzchnia do:" value="{{ values.powierzchnia_do }}">
                         </div>
                       </div>
                       <!-- Form Row 2 -->
                       <div class="form-row">
                         <div class="col-md-12 mb-3">
                           <label class="sr-only">Rodzaj drewna</label>
-                          <select name="wood_type" class="form-control">
+                          <select name="rodzaj_drewna" class="form-control">
                             <option selected="true" disabled="disabled">Rodzaj drewna</option>
-                            <option value="modrzew">Modrzew Syberyjski</option>
-                            <option value="bankirai">Bankirai</option>
-                            <option value="marbau">Merbau</option>
-                            <option value="kompozyt">Deska Kompozytowa</option>
+                            {% for used_wood in used_woods %}
+                              <option value="{{ used_wood }}"
+                              {% if used_wood.name == values.rodzaj_drewna %}
+                                selected
+                              {% endif %}
+                              >{{ used_wood.name }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
@@ -86,13 +89,16 @@
         {% if realizations %}
           {% for realization in realizations %}
             <div class="col-md-6 col-lg-4 mb-4">
+              
               <div class="card listing-preview">
                 <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
-                <div class="card-img-overlay">
-                  <h2>
-                    <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
-                  </h2>
-                </div>
+                <a href="{% url 'realizacja' realization.id %}">
+                  <div class="card-img-overlay">
+                    <h2>
+                      <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
+                    </h2>
+                  </div>
+                </a>
                 <div class="card-body">
                   <div class="listing-heading text-center">
                     <h4 class="text-primary">{{realization.name}}</h4>
@@ -102,12 +108,14 @@
                   <hr>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                      <i class="fas fa-th-large"></i> Powierzchnia:
+                    </div>
                       <div class="col-6 text-right">{{realization.area}} m<SUP>2</SUP> </div>
                     </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-12">
-                      <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                      <i class="fas fa-tree"></i> Rodzaj drewna:
+                    </div>
                       <div class="col-12 text-right">{{realization.used_wood}}</div>
                   </div>
                   <hr>
@@ -116,7 +124,7 @@
                       <i class="fas fa-clock"></i> {{realization.realization_date}}</div>
                   </div>
                   <hr>
-                  <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+                  <div class="btn btn-secondary btn-block">Więcej informacji</div>
                 </div>
               </div>
             </div>

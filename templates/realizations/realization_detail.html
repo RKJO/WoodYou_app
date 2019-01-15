@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} | {{ realization.name }}{% endblock %}
+
+{% block content %}
+
+  <!-- HOME SECTION -->
+  <header id="realizations-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col">
+            <div class="text-center text-white">
+              <h1>{{ realization.name }}</h1>
+              <p>
+                  <i class="fas fa-map-marker text-secondary"></i> {{realization.location }}</p>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+     <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb shadow">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home text-secondary"></i> Strona główna</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'realizacje' %}">
+              <i class="text-secondary"></i> Nasze ralizacje</a>
+          <li class="breadcrumb-item active"> {{ realization.name }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id='realization-info' class="mt-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="card shadow-sm my-2">
+            <div class="card-header">
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                <div class="col-6 text-right">{{ realization.area }} m<SUP>2</SUP> </div>
+              </div>
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-tree"></i> Rodzaj drewna:</div>
+                <div class="col-6 text-right">{{ realization.used_wood }}</div>
+              </div>
+
+              {% if realization.used_products1 or realization.used_products2 %} 
+                <div class="row">
+                  <div class="col-6">
+                    <div class="row py-1 text-secondary">
+                      <div class="col">
+                        <i class="fas fa-hammer"></i> Wykorzystane produkty:
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">  
+                    <div class="row py-1 text-secondary">
+                      {% if realization.used_products1 %}
+                        <div class="col-12 text-right">{{ realization.used_products1.name }}</div>
+                      {% endif %}
+                      {% if realization.used_products2 %}
+                        <div class="col-12 text-right">{{ realization.used_products2.name }}</div>
+                      {% endif %}
+                    </div>
+                  </div> 
+                </div>
+              {% endif %}
+
+              {% if realization.used_materials1 or realization.used_materials2 or realization.used_materials3 %}
+              <div class="row">
+                <div class="col-6">
+                  <div class="row py-1 text-secondary">
+                    <div class="col">
+                      <i class="fas fa-plus-square"></i> Wykorzystane akcesoria:
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">  
+                  <div class="row py-1 text-secondary">
+                    {% if realization.used_materials1 %}
+                      <div class="col-12 text-right">{{ realization.used_materials1.name }}</div>
+                    {% endif %}
+                    {% if realization.used_materials2 %}
+                      <div class="col-12 text-right">{{ realization.used_materials2.name }}</div>
+                    {% endif %}
+                    {% if realization.used_materials3 %}
+                      <div class="col-12 text-right">{{ realization.used_materials3.name }}</div>
+                    {% endif %}
+                  </div>
+                </div> 
+              </div>
+              {% endif %}
+              <hr>
+              <div class="row py-1 text-secondary">
+                <div class="col-6">
+                    <i class="fas fa-money-bill-wave"></i> Koszt realizacji:</div>
+                <div class="col-6 text-right">{{ realization.cost }} zł</div>
+              </div>
+              <hr>
+
+              <div class="row text-secondary mb-1">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i> Czas relizacji</div>
+                  <div class="col-6 text-right">{{ realization.realization_time }} dni</div>
+              </div>
+              <div class="row text-secondary mb-1">
+                <div class="col-6">
+                  <i class="fas fa-calendar-alt"></i> Termin relizacji</div>
+                  <div class="col-6 text-right">{{ realization.realization_date }}</div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="row text-secondary pb-2">
+                <div class="col">
+                  <i class="fas fa-file-alt mb-4"></i> Opis realizacji
+                  <p class="card-text"> {{ realization.description }} </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="col-lg-5">
+          <div class="card shadow-lg my-2">
+            <a href="{{ realization.photo_main.url }}" data-lightbox="realization-images" >
+              <img src="{{ realization.photo_main.url }}" alt="" class="fotos card-img-top">
+            </a>
+            {% if thumbnails %}
+            <div class="row tumbs card-deck m-3">  
+
+              {% for thumbnail in thumbnails %}
+                {% if thumbnail %}
+                  <div class="col-md-3 col-sm-12">
+                    <a href="{{ thumbnail.url }}" data-lightbox="realization-images">
+                      <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
+                  </a>
+                  </div>
+                {%endif%}
+              {% endfor %}
+              
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>  
+  </section>
+
+  <section class="used-products-section" id="used-products">
+      <div class="container">
+          {% if products %}
+            <div class="content-section-heading my-3">
+              <h4 class="p-3 shadow-sm bg-light"> Wykorzystane materiały</h4>
+            </div>
+            <div class="row">
+          {% endif%} 
+
+            {% for product in products %}
+              {% if product %}  
+              <div class="col-md-4 col-lg-3 mb-4">
+                <a href="#" class="hoverable">
+                  <div class="card materials-preview">
+                    <img class="card-img-top" src="{{product.photo_main.url}}" alt="">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-secondary text-white">
+                          <div class="price">
+                            {% if product.price_lm %}
+                            <div class='m-1'>{{product.price_lm}} PLN / mb</div>
+                            <div>{{product.price_m2}} PLN / m<sup>2</sup></div>
+                            {% else %}
+                            <div class='m-1'>{{product.price }} PLN / op</div>
+                            {% endif %}
+                          </div>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                      <div class="btn btn-secondary btn-block">{{product.name}}</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>            
+      </div>
+  </section>
+
+  {% endblock %}
