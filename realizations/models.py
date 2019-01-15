@@ -1,13 +1,14 @@
 from django.db import models
 from materials.models import Product, Material
 from calculations.models import Assembly
-from categories.models import AddAndCreate
+from categories.models import AddAndCreate, RealizationCategory
 import os
 
 def get_upload_realization_path(self, filename):
         return os.path.join("photos/{}/{}".format(self.used_wood, self.location), filename)
 
 class Ralization(AddAndCreate):
+    category_name = models.ManyToManyField(RealizationCategory, verbose_name='Kategoria')
     name = models.CharField('Tytuł realizacji', max_length=100)
     cost = models.IntegerField('Koszt realizacji (PLN)')
     area = models.DecimalField(verbose_name=u'Powierzchnia m²', max_digits=8, decimal_places=1)
