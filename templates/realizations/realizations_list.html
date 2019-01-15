@@ -34,24 +34,27 @@
                       <div class="form-row">     
                         <div class="col-md-6 mb-3">
                           <label class="sr-only">Powierzchnia od:</label>
-                          <input type="text" name="area_from" class="form-control" placeholder="Powierzchnia od:">
+                          <input type="text" name="powierzchnia_od" class="form-control" placeholder="Powierzchnia od:" value="{{ values.powierzchnia_od }}" >
                         </div>
 
                         <div class="col-md-6 mb-3">
                           <label class="sr-only">Powierzchnia do:</label>
-                          <input type="text" name="area_to" class="form-control" placeholder="Powierzchnia do:">
+                          <input type="text" name="powierzchnia_do" class="form-control" placeholder="Powierzchnia do:" value="{{ values.powierzchnia_do }}">
                         </div>
                       </div>
                       <!-- Form Row 2 -->
                       <div class="form-row">
                         <div class="col-md-12 mb-3">
                           <label class="sr-only">Rodzaj drewna</label>
-                          <select name="wood_type" class="form-control">
+                          <select name="rodzaj_drewna" class="form-control">
                             <option selected="true" disabled="disabled">Rodzaj drewna</option>
-                            <option value="modrzew">Modrzew Syberyjski</option>
-                            <option value="bankirai">Bankirai</option>
-                            <option value="marbau">Merbau</option>
-                            <option value="kompozyt">Deska Kompozytowa</option>
+                            {% for used_wood in used_woods %}
+                              <option value="{{ used_wood }}"
+                              {% if used_wood.name == values.rodzaj_drewna %}
+                                selected
+                              {% endif %}
+                              >{{ used_wood.name }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
