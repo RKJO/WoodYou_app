@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %} | Kalkulator{% endblock %}
+
+{% block content %}
+
+<!-- HOME SECTION -->
+<header id="calculate-header">
+    <div class="dark-overlay py-5">
+      <div class="container py-3">
+        <div class="row">
+          <div class="col">
+            <div class="text-center text-white">
+                  <h1><strong>Kalkulator</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </header>
+
+  <!-- CALCULATE SECTION -->
+  <section id="calculate-form" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="home-calculate overlay p-3 shadow">
+                  <div class="search">
+                    <form action="{% url 'kalkulator' %}" method="POST">
+                      <!-- Form Row 1 -->
+                      <div class="form-row px-4">     
+                        <div class="col-md-6 mb-3 text-center">
+                            <i class="fas fa-th-large pt-3"></i> Powierzchnia: 
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          
+                          <input type="text" name="surface" class="form-control" placeholder="m&sup2;"> 
+                        </div>
+                      </div>
+                      <!-- Form Row 2 -->
+                      <div class="form-row px-4">
+                          <div class="col-md-6 mb-3 text-center">
+                              <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
+                          </div>
+                        <div class="col-md-6 mb-3">
+                          <select name="wood" class="form-control">
+                            <option selected="true" disabled="disabled"> Wybierz</option>
+                            <option value="modrzew">Modrzew Syberyjski</option>
+                            <option value="bankirai">Bankirai</option>
+                            <option value="marbau">Merbau</option>
+                            <option value="kompozyt">Deska Kompozytowa</option>
+                          </select>
+                        </div>
+                        </div>
+                        <!-- Form Row 2 -->
+                        <div class="form-row px-4">
+                          <div class="col-md-6 mb-3 text-center">
+                              <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
+                          </div>
+                        <div class="col-md-6 mb-3">
+                          <select name="where_to" class="form-control">
+                            <option selected="true" disabled="disabled">Wybierz</option>
+                            <option value="balkon">Zabudowa balkonu w bloku</option>
+                            <option value="domek">Taras przy domu</option>
+                          </select>
+                        </div>
+                      
+                      <button class="btn btn-secondary btn-block mt-4" type="submit">Oblicz</button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb shadow">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home text-secondary"></i> Strona główna</a>
+          </li>
+          <li class="breadcrumb-item active"> Kalkulacja oferty</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Calculate info section -->
+<section>
+  <div class="container" id="calculate-table">
+    <div class="info-box">
+        <div class="row text-right py-4">
+            <div class="col-md-5">
+              <i class="fas fa-calculator text-secondary"></i> Kalkulacja dla tarasu:
+            </div>
+            <div class="col-md-7">
+                45 m<sup>2</sup>, Modzew syberyski, Zabuduwa balkonu
+            </div>
+        </div>
+    </div>
+    <div class="calculate-info">
+        <table class="table table-hover" id="myTable">
+            <thead>
+              <tr>
+                  <th>Produkt</th>
+                  <th>Cena jednostkowa</th>
+                  <th>Koszt</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Drewno Modrzew Syberyski</td>
+                <td>100 zł/m<sup>2</sup></td>
+                <td>4500 zł</td>
+            </tr>
+            <tr>
+                <td>Legary </td>
+                <td>30 zł/mb</td>
+                <td>450 zł</td>
+            </tr>
+            <tr>
+                <td>Wkręty</td>
+                <td>200 zł/op</td>
+                <td>400 zł</td>
+            </tr>
+            <tr>
+                <td>Olej </td>
+                <td>150 zł/szt</td>
+                <td>150 zł</td>
+            </tr>
+            <tr>
+                <td>Montaż</td>
+                <td class="number">120 zł/mb</td>
+                <td>5400 zł</td>
+            </tbody>
+            <tfoot>
+                <td></td>
+                <td> <strong>Suma:</strong></td>
+                <td class="result"></td>
+            </tfoot>
+        </table>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container pb-3">
+    <div class="row">
+      <div class="col-md-6">
+          <button class="btn btn-success btn-block"><i class="fa fa-file-pdf"></i>  Pobierz PDF</button>
+      </div>
+      <div class="col-md-6">
+          <button class="btn btn-success btn-block"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.template.response import TemplateResponse
+from django.views import View
 
-# Create your views here.
+class CalculationView(View):
+
+    def get(self, request):
+        return TemplateResponse(request, 'calculations/calculation_page.html')
