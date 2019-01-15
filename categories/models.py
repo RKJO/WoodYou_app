@@ -19,6 +19,13 @@ class Category(AddAndCreate):
         abstract = True
 
 class ProductCategory(Category):
+    type_choice = {
+        (1, 'Deski'),
+        (2, 'Drewno Konstrukcyjne'),
+        (3, 'Inne'),
+    }
+
+    product_type = models.IntegerField('Typ', choices=type_choice)
 
     class Meta:
         verbose_name = "Kategoria Produktu"
