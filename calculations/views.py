@@ -9,11 +9,13 @@ class CalculationView(View):
     def get(self, request):
 
         wood_species = Product.objects.filter(category_name__product_type=1).filter(used_for_calculate=True).order_by('-name')
-        assembly_type = Assembly.objects.order_by('price_m2')
+        assembly_types = Assembly.objects.order_by('price_m2')
 
         context = {
             'wood_species' : wood_species,
-            'assembly_type' : assembly_type,
+            'assembly_types' : assembly_types,
         }
 
         return TemplateResponse(request, 'calculations/calculation_page.html', context)
+
+    
