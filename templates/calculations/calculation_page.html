@@ -35,9 +35,7 @@
                         <div class="col-md-6 mb-3 text-center">
                             <i class="fas fa-th-large pt-3"></i> Powierzchnia: 
                         </div>
-
                         <div class="col-md-6 mb-3">
-                          
                           <input type="text" name="surface" class="form-control" placeholder="m&sup2;"> 
                         </div>
                       </div>
@@ -49,14 +47,13 @@
                         <div class="col-md-6 mb-3">
                           <select name="wood" class="form-control">
                             <option selected="true" disabled="disabled"> Wybierz</option>
-                            <option value="modrzew">Modrzew Syberyjski</option>
-                            <option value="bankirai">Bankirai</option>
-                            <option value="marbau">Merbau</option>
-                            <option value="kompozyt">Deska Kompozytowa</option>
+                            {%  for wood in wood_species %}
+                                <option value="{{ wood.name}}">{{ wood.name}}</option>
+                            {% endfor %}
                           </select>
                         </div>
                         </div>
-                        <!-- Form Row 2 -->
+                        <!-- Form Row 3 -->
                         <div class="form-row px-4">
                           <div class="col-md-6 mb-3 text-center">
                               <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
@@ -64,8 +61,9 @@
                         <div class="col-md-6 mb-3">
                           <select name="where_to" class="form-control">
                             <option selected="true" disabled="disabled">Wybierz</option>
-                            <option value="balkon">Zabudowa balkonu w bloku</option>
-                            <option value="domek">Taras przy domu</option>
+                            {% for assembly in assembly_type %}
+                                <option value="{{ assembly.assembly_typ }}">{{ assembly.assembly_typ}}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       
