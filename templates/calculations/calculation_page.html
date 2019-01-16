@@ -30,44 +30,46 @@
               <div class="home-calculate overlay p-3 shadow">
                   <div class="search">
                     <form action="{% url 'kalkulator' %}" method="POST">
-                      <!-- Form Row 1 -->
-                      <div class="form-row px-4">     
-                        <div class="col-md-6 mb-3 text-center">
-                            <i class="fas fa-th-large pt-3"></i> Powierzchnia: 
+                        {% csrf_token%}
+                        <!-- Form Row 1 -->
+                        <div class="form-row px-4">
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-th-large pt-3"></i> Powierzchnia:
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" name="surface" class="form-control" placeholder="m&sup2;">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                          <input type="text" name="surface" class="form-control" placeholder="m&sup2;"> 
-                        </div>
-                      </div>
-                      <!-- Form Row 2 -->
-                      <div class="form-row px-4">
-                          <div class="col-md-6 mb-3 text-center">
-                              <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
-                          </div>
-                        <div class="col-md-6 mb-3">
-                          <select name="wood" class="form-control">
-                            <option selected="true" disabled="disabled"> Wybierz</option>
-                            {%  for wood in wood_species %}
-                                <option value="{{ wood.name}}">{{ wood.name}}</option>
-                            {% endfor %}
-                          </select>
-                        </div>
+                        <!-- Form Row 2 -->
+                        <div class="form-row px-4">
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select name="wood" class="form-control">
+                                    <option selected="true" disabled="disabled"> Wybierz</option>
+                                    {%  for wood in wood_species %}
+                                        <option value="{{ wood.name }}">{{ wood.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                         <!-- Form Row 3 -->
                         <div class="form-row px-4">
-                          <div class="col-md-6 mb-3 text-center">
-                              <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
-                          </div>
-                        <div class="col-md-6 mb-3">
-                          <select name="where_to" class="form-control">
-                            <option selected="true" disabled="disabled">Wybierz</option>
-                            {% for assembly in assembly_type %}
-                                <option value="{{ assembly.assembly_typ }}">{{ assembly.assembly_typ}}</option>
-                            {% endfor %}
-                          </select>
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select name="where_to" class="form-control">
+                                    <option selected="true" disabled="disabled">Wybierz</option>
+                                    {% for assembly in assembly_types %}
+                                        <option value="{{ assembly.assembly_typ }}">{{ assembly.assembly_typ}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                      
-                      <button class="btn btn-secondary btn-block mt-4" type="submit">Oblicz</button>
+                        <!-- submit button -->
+                        <button class="btn btn-secondary btn-block mt-4" type="submit">Oblicz</button>
                     </form>
                   </div>
                 </div>
