@@ -37,7 +37,8 @@
                                 <i class="fas fa-th-large pt-3"></i> Powierzchnia:
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="text" name="surface" class="form-control" placeholder="m&sup2;">
+                                <input type="text" name="surface" class="form-control" placeholder="m&sup2;" required="true" value="{{ values.surface }}" oninvalid="this.setCustomValidity('Proszę podać powierzchnię w m&sup2')" oninput="setCustomValidity('')"
+                                >
                             </div>
                         </div>
                         <!-- Form Row 2 -->
@@ -46,10 +47,13 @@
                                 <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select name="wood" class="form-control">
+                                <select name="wood" class="form-control" required="true" oninvalid="this.setCustomValidity('Proszę wybrać rodzaj drewna')" oninput="setCustomValidity('')">
                                     <option selected="true" disabled="disabled"> Wybierz</option>
                                     {%  for wood in wood_species %}
-                                        <option value="{{ wood.name }}">{{ wood.name}}</option>
+                                        <option value="{{ wood.name }}"
+                                        {% if wood.name == values.wood %}
+                                            selected
+                                        {% endif %}>{{ wood.name}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -60,10 +64,13 @@
                                 <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select name="where_to" class="form-control">
+                                <select name="where_to" class="form-control" required="true" oninvalid="this.setCustomValidity('Proszę wybrać typ zabudowy')" oninput="setCustomValidity('')">
                                     <option selected="true" disabled="disabled">Wybierz</option>
                                     {% for assembly in assembly_types %}
-                                        <option value="{{ assembly.assembly_typ }}">{{ assembly.assembly_typ}}</option>
+                                        <option value="{{ assembly.assembly_typ }}"
+                                        {% if assembly.assembly_typ == values.where_to %}
+                                            selected
+                                        {% endif %}>{{ assembly.assembly_typ}}</option>
                                     {% endfor %}
                                 </select>
                             </div>

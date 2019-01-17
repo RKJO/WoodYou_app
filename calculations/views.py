@@ -13,7 +13,6 @@ class CalculationView(View):
     def get(self, request):
 
         context = {
-            'form': CalculateForm(),
             'wood_species' : self.wood_species,
             'assembly_types' : self.assembly_types,
         }
