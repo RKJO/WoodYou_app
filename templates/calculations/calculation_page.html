@@ -30,44 +30,53 @@
               <div class="home-calculate overlay p-3 shadow">
                   <div class="search">
                     <form action="{% url 'kalkulator' %}" method="POST">
-                      <!-- Form Row 1 -->
-                      <div class="form-row px-4">     
-                        <div class="col-md-6 mb-3 text-center">
-                            <i class="fas fa-th-large pt-3"></i> Powierzchnia: 
+                        {% csrf_token%}
+                        <!-- Form Row 1 -->
+                        <div class="form-row px-4">
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-th-large pt-3"></i> Powierzchnia:
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" name="surface" class="form-control" placeholder="m&sup2;" required="true" value="{{ values.surface }}" oninvalid="this.setCustomValidity('Proszę podać powierzchnię w m&sup2')" oninput="setCustomValidity('')"
+                                >
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                          <input type="text" name="surface" class="form-control" placeholder="m&sup2;"> 
-                        </div>
-                      </div>
-                      <!-- Form Row 2 -->
-                      <div class="form-row px-4">
-                          <div class="col-md-6 mb-3 text-center">
-                              <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
-                          </div>
-                        <div class="col-md-6 mb-3">
-                          <select name="wood" class="form-control">
-                            <option selected="true" disabled="disabled"> Wybierz</option>
-                            {%  for wood in wood_species %}
-                                <option value="{{ wood.name}}">{{ wood.name}}</option>
-                            {% endfor %}
-                          </select>
-                        </div>
+                        <!-- Form Row 2 -->
+                        <div class="form-row px-4">
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-tree pt-3"></i> Rodzaj desek: 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select name="wood" class="form-control" required="true" oninvalid="this.setCustomValidity('Proszę wybrać rodzaj drewna')" oninput="setCustomValidity('')">
+                                    <option selected="true" disabled="disabled"> Wybierz</option>
+                                    {%  for wood in wood_species %}
+                                        <option value="{{ wood.name }}"
+                                        {% if wood.name == values.wood %}
+                                            selected
+                                        {% endif %}>{{ wood.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                         <!-- Form Row 3 -->
                         <div class="form-row px-4">
-                          <div class="col-md-6 mb-3 text-center">
-                              <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
-                          </div>
-                        <div class="col-md-6 mb-3">
-                          <select name="where_to" class="form-control">
-                            <option selected="true" disabled="disabled">Wybierz</option>
-                            {% for assembly in assembly_type %}
-                                <option value="{{ assembly.assembly_typ }}">{{ assembly.assembly_typ}}</option>
-                            {% endfor %}
-                          </select>
+                            <div class="col-md-6 mb-3 text-center">
+                                <i class="fas fa-home pt-3"></i> Rodzaj zabudowy: 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select name="where_to" class="form-control" required="true" oninvalid="this.setCustomValidity('Proszę wybrać typ zabudowy')" oninput="setCustomValidity('')">
+                                    <option selected="true" disabled="disabled">Wybierz</option>
+                                    {% for assembly in assembly_types %}
+                                        <option value="{{ assembly.assembly_type }}"
+                                        {% if assembly.assembly_type == values.where_to %}
+                                            selected
+                                        {% endif %}>{{ assembly.assembly_type}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                      
-                      <button class="btn btn-secondary btn-block mt-4" type="submit">Oblicz</button>
+                        <!-- submit button -->
+                        <button class="btn btn-secondary btn-block mt-4" type="submit">Oblicz</button>
                     </form>
                   </div>
                 </div>
@@ -92,6 +101,7 @@
   </section>
 
   <!-- Calculate info section -->
+{% if request.POST %}
 <section>
   <div class="container" id="calculate-table">
     <div class="info-box">
@@ -100,11 +110,11 @@
               <i class="fas fa-calculator text-secondary"></i> Kalkulacja dla tarasu:
             </div>
             <div class="col-md-7">
-                45 m<sup>2</sup>, Modzew syberyski, Zabuduwa balkonu
+                {{values.surface}} m<sup>2</sup>, {{values.wood}}, {{values.where_to}}
             </div>
         </div>
     </div>
-    <div class="calculate-info">
+    <div class="calculate-info my-4">
         <table class="table table-hover" id="myTable">
             <thead>
               <tr>
@@ -115,34 +125,34 @@
             </thead>
             <tbody>
             <tr>
-                <td>Drewno Modrzew Syberyski</td>
-                <td>100 zł/m<sup>2</sup></td>
-                <td>4500 zł</td>
+                <td>Drewno: {{values.wood}}</td>
+                <td>{{ calculations.wood_price }} zł/m<sup>2</sup></td>
+                <td>{{ calculations.wood_cost }} zł</td>
             </tr>
             <tr>
                 <td>Legary </td>
-                <td>30 zł/mb</td>
-                <td>450 zł</td>
+                <td>{{ calculations.joist_price }} zł/mb</td>
+                <td>{{ calculations.joist_cost }} zł</td>
             </tr>
             <tr>
                 <td>Wkręty</td>
-                <td>200 zł/op</td>
-                <td>400 zł</td>
+                <td>{{ calculations.screws_pice }} zł/op</td>
+                <td>{{ calculations.screws_cost }} zł</td>
             </tr>
             <tr>
                 <td>Olej </td>
-                <td>150 zł/szt</td>
-                <td>150 zł</td>
+                <td>{{ calculations.oil_price }} zł/szt</td>
+                <td>{{ calculations.oil_cost }} zł</td>
             </tr>
             <tr>
                 <td>Montaż</td>
-                <td class="number">120 zł/mb</td>
-                <td>5400 zł</td>
+                <td class="number">{{ calculations.assembly_price }}  zł/mb</td>
+                <td>{{ calculations.assembly_cost }} zł</td>
             </tbody>
             <tfoot>
                 <td></td>
                 <td> <strong>Suma:</strong></td>
-                <td class="result"></td>
+                <td class="result">{{ calculations.total_cost }} zł</td>
             </tfoot>
         </table>
 
@@ -162,5 +172,23 @@
     </div>
   </div>
 </section>
-
+{% else %}
+    <section>
+        <div class="container" id="calculate-table">
+            <div class="info-box">
+                <div class="row text-right py-4 my-5">
+                    <div class="col-md-5">
+                        <i class="fas fa-9x fa-calculator text-secondary"></i> 
+                    </div>
+                    <div class="col-md-5">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">To pojawi się kalkulacja twojego tarasu.</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">Wood You</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
 {% endblock %}

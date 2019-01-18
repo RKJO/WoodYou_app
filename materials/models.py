@@ -40,6 +40,7 @@ class Material(AddAndCreate):
     name = models.CharField('Nazwa Materiału', max_length=120)
     price = models.DecimalField('Cena (PLN)', max_digits=5, decimal_places=2)
     description = models.TextField('Opis Materiału', blank=True)
+    used_for_calculate = models.BooleanField('Pokaż w kalkulatorze', default=True)
     photo_main = models.ImageField('Obraz gółwny', upload_to=get_upload_path)
     photo_2 = models.ImageField('Obraz 2', upload_to=get_upload_path, blank=True)
     photo_3 = models.ImageField('Obraz 3', upload_to=get_upload_path, blank=True)
