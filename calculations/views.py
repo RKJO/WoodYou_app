@@ -37,7 +37,7 @@ class CalculationView(View):
 
     def calculate_cost(self, surface, wood, where_to):
         # used wood
-        wood_price = self.wood_species.filter(name=wood)[0].price_m2
+        wood_price = Product.objects.filter(category_name__product_type=1).filter(used_for_calculate=True).filter(name=wood)[0].price_m2
         wood_cost = wood_price * Decimal(surface)
 
         # used joist
@@ -45,7 +45,7 @@ class CalculationView(View):
         joist_cost = Decimal(joist_price * Decimal('2.5') * Decimal(surface)).quantize(Decimal('.01'), rounding=ROUND_UP)
 
         # assembly
-        assembly_price = self.assembly_types.filter(assembly_type=where_to)[0].price_m2
+        assembly_price = Assembly.objects.filter(assembly_type=where_to)[0].price_m2
         assembly_cost = assembly_price * Decimal(surface)
 
         # screws
