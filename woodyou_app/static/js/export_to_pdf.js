@@ -27,7 +27,7 @@ function CalculationExportToPDF() {
         useCss: true,
     });
 
-    pdf.setFontSize(12);
+    pdf.setFontSize(9);
 
     var disclaimer = "Podane ceny sa cenami szacunkowymi i nie stanowia oferty handlowej w rozumieniu art 66 par 1 Kodeksu Cywilnego. Aby uzyskac precyzyjna wycene projektu skontaktuj sie z nami."
 
