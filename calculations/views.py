@@ -45,8 +45,15 @@ class CalculationView(View):
         joist_cost = Decimal(joist_price * Decimal('2.5') * Decimal(surface)).quantize(Decimal('.01'), rounding=ROUND_UP)
 
         # assembly
-        assembly_price = Assembly.objects.filter(assembly_type=where_to)[0].price_m2
-        assembly_cost = assembly_price * Decimal(surface)
+        assembly_price_to_calculate = Assembly.objects.filter(assembly_type=where_to)[0].price_m2
+        if surface <= 16:
+            assembly_cost = (assembly_price_to_calculate * Decimal(surface)) + Decimal(800)
+            assembly_price = (assembly_cost / Decimal(surface)).quantize(Decimal('1'), rounding=ROUND_UP)
+        else:
+            assembly_price = Assembly.objects.filter(assembly_type=where_to)[0].price_m2
+            assembly_cost = assembly_price * Decimal(surface)
+
+
 
         # screws
         screws_pice = Material.objects.filter(category_name__material_type=2).filter(used_for_calculate=True).order_by('price')[0].price
