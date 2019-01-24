@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views import View
 from decimal import *
+from django.core.mail import send_mail
 
 from materials.models import Product, Material
 from .models import Assembly
-from .forms import CalculateForm
+from .forms import CalculateForm, InquiryModalForm
 
 class CalculationView(View):
 
@@ -19,9 +20,11 @@ class CalculationView(View):
 
     def post(self, request):
         form = CalculateForm(data=request.POST)
+        inquiry_form = InquiryModalForm(data=request.POST)
+
         context = {'form': form}
 
-        if form.is_valid():
+        if request.POST and form.is_valid():
             surface = form.cleaned_data['surface']
             wood = form.cleaned_data['wood']
             where_to = form.cleaned_data['where_to']
@@ -31,7 +34,32 @@ class CalculationView(View):
             context.update({
                 'calculations': calculations,
                 'values' : form.cleaned_data,
+                'inquiry_form' : InquiryModalForm(),
             })
+
+
+            if request.POST and inquiry_form.is_valid():
+                name = inquiry_form.cleaned_data['name']
+                email = inquiry_form.cleaned_data['email']
+                phone = inquiry_form.cleaned_data['phone']
+                message = inquiry_form.cleaned_data['message']
+                
+                send_mail(
+                    'Zapytanie o taras: '+ str(surface) + u'm² ' + str(wood) + ',  ' + str(where_to), 
+                    message,
+                    'zapytanie@woodyou.waw.pl',  
+                    ['rkjozwiak@gmail.com'],
+                    fail_silently=False
+                )
+
+                context = {
+                    'inquiry_form' : inquiry_form,
+                }
+
+            else:
+                context.update({
+                    'inquiry_form' : InquiryModalForm(),
+                })
 
         return TemplateResponse(request, 'calculations/calculation_page.html', context)
 
