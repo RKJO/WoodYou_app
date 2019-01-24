@@ -137,3 +137,11 @@ STATICFILES_DIRS = [
 # Media folder settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Email config
+EMAIL_HOST = 'mail19.mydevil.net'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'biuro@woodyou.waw.pl'
+EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
