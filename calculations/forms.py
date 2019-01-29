@@ -1,4 +1,6 @@
 from django import forms
+from django.forms.widgets import HiddenInput
+
 from django.core.validators import RegexValidator
 
 from materials.models import Product
@@ -15,9 +17,18 @@ class CalculateForm(forms.Form):
     wood.widget.attrs.update(oninvalid="setCustomValidity('Wybierz rodzaj drewna.')", oninput="setCustomValidity('')")
     where_to.widget.attrs.update(oninvalid="setCustomValidity('Wybierz typ zabudowy')", oninput="setCustomValidity('')")
 
-class InquiryModalForm(forms.Form):
+class InquiryModalForm(CalculateForm):
     name = forms.CharField(label='Imię:', max_length='24', required=True,)
     email = forms.EmailField(label='Email:', required=True)
-    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Numer telefonu musi być podany w formacie: '+48123456789'.")
-    phone = forms.CharField(label='Nr. telefonu:',validators=[phone_regex], max_length=12,)
+    phone = forms.CharField(label='Nr. telefonu:', max_length=12, required=True)
     message = forms.CharField(widget=forms.Textarea)
+
+
+    name.widget.attrs.update(oninvalid="setCustomValidity('Podaj swoje Imię')", oninput="setCustomValidity('')")
+    email.widget.attrs.update(oninvalid="setCustomValidity('Podaj adres email')", oninput="setCustomValidity('')")
+
+    def __init__(self, *args, **kwargs):
+        super(InquiryModalForm, self).__init__(*args, **kwargs)
+        self.fields['surface'].widget = HiddenInput()
+        self.fields['wood'].widget = HiddenInput()
+        self.fields['where_to'].widget = HiddenInput()
