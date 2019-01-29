@@ -12,7 +12,7 @@ function CalculationExportToPDF() {
         pdf.setFontStyle('normal');
         pdf.addImage(headerImgData, 'JPEG', data.settings.margin.right * 13, 20, 50, 50);
         pdf.text("Kalkulacja oferty", data.settings.margin.left + 40, 50);
-      };
+    };
 
     pdf.fromHTML($('#calculate-info').get(0), 60, 90, {
         useCss: true,
@@ -23,7 +23,7 @@ function CalculationExportToPDF() {
         html: $("#calculations-table").get(0),
         margin: {
             top: 200,
-          },
+        },
         useCss: true,
     });
 
