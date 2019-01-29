@@ -154,7 +154,7 @@
   <div class="container pb-3">
     <div class="row">
       <div class="col-md-6 my-1">
-          <button class="btn btn-success btn-block" onclick="javascript:CalculationExportToPDF();"><i class="fa fa-file-pdf"></i>  Pobierz PDF</button>
+          <button class="btn btn-success btn-block"  data-toggle="modal" data-target="#reminderModal"><i class="fa fa-file-pdf"></i>  Pobierz PDF</button>
       </div>
       <div class="col-md-6">
           <button class="btn btn-success btn-block" data-toggle="modal" data-target="#inquiryModal"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
@@ -165,25 +165,51 @@
 
 <!-- Inquiry Modal -->
 <div class="modal fade" id="inquiryModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="inquiryModalLabel">Prześlij zapytanie o szczegłową ofertę</h5>
-              <button type="button" class="close" data-dismiss="modal">
+                <h5 class="modal-title" id="inquiryModalLabel">Prześlij zapytanie o szczegłową ofertę</h5>
+                <button type="button" class="close" data-dismiss="modal">
                 <span>&times;</span>
-              </button>
+                </button>
             </div>
             <div class="modal-body">
                 <form method="POST">
                     {% csrf_token %} 
                     {{inquiry_form|crispy}}
                     <hr>
-                    <input type="submit" value="Wyślij" class="btn btn-block btn-secondary">
+                    <div class="legal">
+                        Klikając zamieszczony poniżej przycisk "Wyślij wiadomość" wyrażasz zgodę na przetwarzanie danych osobowych takich jak: adres e-mail, imię, nazwisko oraz numer telefonu przez Global Biznes Spółka z o.o. z siedzibą w Warszawie przy ul. Górczewskiej 53, 01-401 Warszawa, wpisaną do rejestru przedsiębiorców prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy KRS pod numerem 0000531100, NIP 5272721408, REGON 14743684100000, kontaktowy adres e-mail: info@global-biznes.pl, telefon kontaktowy: +48 603 955 733, w celu udzielenia odpowiedzi na przesłaną za pośrednictwem formularza kontaktowego wiadomość. Szczegółowe zasady przetwarzania danych osobowych przez Global Biznes Sp. z o. o. są zawarte w <a href="https://cdn.global-biznes.pl/assets/files/globalbiznes_polityka_prywatnosci.pdf" target="_blank">Polityce Prywatności</a>.</p>
+                    </div>
+                    <hr>
+                    <input type="submit" value="Wyślij wiadomość" class="btn btn-block btn-secondary">
                 </form>
             </div>
-          </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Reminder Modal -->
+ <div class="modal fade" id="reminderModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+              <h1 class="h5 text-center">Możesz również wysłać zapytanie o szczegłowa ofertę</h1>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="CalculationExportToPDF()"><i class="fa fa-file-pdf" ></i>  Pobierz PDF</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#inquiryModal"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
         </div>
       </div>
+    </div>
+  </div>
     
 {% else %}
     <section>
