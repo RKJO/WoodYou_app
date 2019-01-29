@@ -209,14 +209,80 @@
   <div class="container pb-3">
     <div class="row">
       <div class="col-md-6">
-          <button class="btn btn-success btn-block"><i class="fa fa-file-pdf"></i>  Pobierz PDF</button>
+          <button class="btn btn-success btn-block" data-toggle="modal" data-target="#reminderModal"><i class="fa fa-file-pdf" ></i>  Pobierz PDF</button>
       </div>
       <div class="col-md-6">
-          <button class="btn btn-success btn-block"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
+          <button class="btn btn-success btn-block" data-toggle="modal" data-target="#inquiryModal"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Inquiry Modal -->
+<div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Prześlij zapytanie o szczegłową ofertę</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Imię:</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Nr telefonu:</label>
+              <input type="text" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Wiadomość:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <hr>
+            <div class="legal">
+              Klikając zamieszczony poniżej przycisk "Wyślij wiadomość" wyrażasz zgodę na przetwarzanie danych osobowych takich jak: adres e-mail, imię, nazwisko oraz numer telefonu przez Global Biznes Spółka z o.o. z siedzibą w Warszawie przy ul. Górczewskiej 53, 01-401 Warszawa, wpisaną do rejestru przedsiębiorców prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy KRS pod numerem 0000531100, NIP 5272721408, REGON 14743684100000, kontaktowy adres e-mail: info@global-biznes.pl, telefon kontaktowy: +48 603 955 733, w celu udzielenia odpowiedzi na przesłaną za pośrednictwem formularza kontaktowego wiadomość. Szczegółowe zasady przetwarzania danych osobowych przez Global Biznes Sp. z o. o. są zawarte w 
+              <a href="https://cdn.global-biznes.pl/assets/files/globalbiznes_polityka_prywatnosci.pdf" target="_blank">Polityce Prywatności</a>.</p>
+            </div>
+            <hr>
+            <input type="submit" value="Wyślij" class="btn btn-block btn-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reminder Modal -->
+  <div class="modal fade" id="reminderModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="jumbotron py-3 my-3"> -->
+            <div class="container">
+              <h1 class="h5 text-center">Możesz również wysłać zapytanie o szczegłowa ofertę</h1>
+              <!-- <p class="lead">Możesz również wysłać zapytanie o szczegłowa ofertę</p> -->
+            </div>
+          <!-- </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"><i class="fa fa-file-pdf" ></i>  Pobierz PDF</button>
+          <button type="button" class="btn btn-primary"><i class="fas fa-envelope"></i> Zapytaj o ofertę</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- Footer -->
   <footer id="main-footer" class="py-2 bg-primary text-white text-center">

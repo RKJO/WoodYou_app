@@ -39,7 +39,15 @@ class ProductCategory(Category):
 
 
 class MaterialCategory(Category):
+    type_choice = {
+        (1, 'Oleje i impregnaty'),
+        (2, 'Wkręty ze stali nierdzewnej'),
+        (3, 'Wsporniki regulowane'),
+        (4, 'Akcesoria'),
+    }
 
+    material_type = models.IntegerField('Typ', choices=type_choice)
+    
     class Meta:
         verbose_name = "Kategoria Materiału"
         verbose_name_plural = "Kategorie Materiałów"

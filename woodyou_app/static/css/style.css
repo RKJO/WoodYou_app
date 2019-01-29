@@ -112,6 +112,19 @@
   #calculate-form .home-calculate .form-control {
     text-align-last: center; }
 
+#inquiryModal textarea {
+  height: 10rem; }
+#inquiryModal .legal {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #666;
+  text-align: justify; }
+
+#reminderModal {
+  position: fixed;
+  top: 25%; }    
+
 @media (max-width: 768px) {
   #top-bar {
     text-align: center; }
