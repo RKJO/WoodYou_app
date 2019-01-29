@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.template.response import TemplateResponse
-from django.views import View
+from django.core.mail import send_mass_mail
+from django.contrib import messages
 from decimal import *
 
 from materials.models import Product, Material
+from django.views import View
 from .models import Assembly
-from .forms import CalculateForm
+from .forms import CalculateForm, InquiryModalForm
 
 class CalculationView(View):
 
@@ -19,9 +21,11 @@ class CalculationView(View):
 
     def post(self, request):
         form = CalculateForm(data=request.POST)
+        inquiry_form = InquiryModalForm(data=request.POST)
+
         context = {'form': form}
 
-        if form.is_valid():
+        if request.POST and form.is_valid():
             surface = form.cleaned_data['surface']
             wood = form.cleaned_data['wood']
             where_to = form.cleaned_data['where_to']
@@ -31,7 +35,55 @@ class CalculationView(View):
             context.update({
                 'calculations': calculations,
                 'values' : form.cleaned_data,
-            })
+                'inquiry_form' : InquiryModalForm(
+                    initial={
+                        'surface' : surface,
+                        'wood': wood,
+                        'where_to': where_to,
+                        'message': 'Witam,\nproszę o kontakt w sprawie wyceny tarasu: ' + str(surface) + u'm², ' + str(wood) + ',  ' + str(where_to) +'\n\r'
+                    })
+                })
+
+
+            if request.POST and inquiry_form.is_valid():
+                name = inquiry_form.cleaned_data['name']
+                email = inquiry_form.cleaned_data['email']
+                phone = inquiry_form.cleaned_data['phone']
+                message = inquiry_form.cleaned_data['message']
+
+                surface = inquiry_form.cleaned_data['surface']
+                wood = inquiry_form.cleaned_data['wood']
+                where_to = inquiry_form.cleaned_data['where_to']
+
+                calculations = self.calculate_cost(surface, wood, where_to)
+                
+                message_to_office = (
+                    'Zapytanie o taras: '+ str(surface) + u'm², ' + str(wood) + ',  ' + str(where_to), 
+                    message + '\n\r' + 'Kontakt do klienta: \n' + name + ' '+ email + ' ' + phone,
+                    email,
+                    ['biuro@woodyou.waw.pl'])
+
+                message_to_client = (
+                    'Potwierdzenie zpytania o taras: '+ str(surface) + u'm², ' + str(wood) + ',  ' + str(where_to),
+                    'Dziekujemy za zainteresowanie naszą ofertą, skontaktujemy się z Państwem w najbliższym czasie\n\r Pozdrawiamy, \n Zespół WoodYou\n biuro@woodyou.waw.pl\n +48 531 356 412', 
+                    'biuro@woodyou.waw.pl',
+                    [email])
+
+                send_mass_mail((message_to_office, message_to_client), fail_silently=False)
+
+                context = {
+                    'calculations': calculations,
+                    'values' : inquiry_form.cleaned_data,
+                    'inquiry_form' : inquiry_form,
+                    'form': CalculateForm(
+                        initial={
+                            'surface' : surface,
+                            'wood': wood,
+                            'where_to': where_to,
+                            })
+                }
+
+                messages.success(request, 'Zapytanie o szczegółową oferę zostało poprawnie wysłane. Na Twój adres email zostało również wysłane potwierdzenie')
 
         return TemplateResponse(request, 'calculations/calculation_page.html', context)
 
@@ -52,8 +104,6 @@ class CalculationView(View):
         else:
             assembly_price = Assembly.objects.filter(assembly_type=where_to)[0].price_m2
             assembly_cost = assembly_price * Decimal(surface)
-
-
 
         # screws
         screws_pice = Material.objects.filter(category_name__material_type=2).filter(used_for_calculate=True).order_by('price')[0].price
