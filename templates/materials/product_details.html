@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} | {{material.name}}{% endblock %}
+{% block title %} | {{ product.name }}{% endblock %}
 
 {% block content %}
 
@@ -13,8 +13,8 @@
           <div class="row">
             <div class="col">
               <div class="text-center text-white">
-                <h1>{{ material.name }}</h1>
-                <h4>{{material.category_name}}</h4>
+                <h1>{{ product.name }}</h1>
+                <h4>{{product.category_name}}</h4>
               </div>
             </div>
           </div>
@@ -35,29 +35,52 @@
           <a href="{% url 'materialy' %}">
             <i class="text-secondary"></i> Materialy</a>
         </li>
-        <li class="breadcrumb-item active"> {{material.name}}</li>
+        <li class="breadcrumb-item active"> {{product.name}}</li>
       </ol>
     </nav>
   </div>
 </section>
 
-<section id='material-info' class="mt-2">
+<section id='product-info' class="mt-2">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
         <div class="card shadow-sm my-5">
           <div class="card-header">
             <div class="row py-1 text-secondary">
-              <div class="col-6">
-                <i class="far fa-money-bill-alt"></i> Cena:</div>
-              <div class="col-6 text-right">{{ material.price }} zł/op</div>
+                <div class="col-6">
+                    <div class="col-12 p-0">
+                        <i class="far fa-money-bill-alt"></i> Cena:
+                    </div>
+                </div>
+                <div class="col-6">
+                    {% if product.price_m2 %}
+                    <div class="col-12 text-right">{{ product.price_m2 }} zł/m<sup>2</sup></div>
+                    {% endif %}
+                    <div class="col-12 text-right">{{ product.price_lm }} zł/mb</div>
+                </div>
             </div>
+            <hr>
+            {% if product.thickness and product.width %}
+                <div class="row py-1 text-secondary">
+                    <div class="col-6">
+                        <i class="fas fa-expand-arrows-alt"></i> Wymiary:</div>
+                    <div class="col-6 text-right">{{ product.thickness }} x {{ product.width }} mm</div>
+                </div>
+            {% endif %}
+            {% if product.weight %}
+                <div class="row py-1 text-secondary">
+                    <div class="col-6">
+                        <i class="fas fa-weight-hanging"></i> Waga:</div>
+                    <div class="col-6 text-right">{{ product.weight }} kg/mb</div>
+                </div>
+            {% endif %}
           </div>
           <div class="card-body">
             <div class="row pb-2">
               <div class="col ">
                 <span class="text-secondary"><i class="fas fa-file-alt mb-4"></i> Opis:</span> 
-                <p class="card-text text-muted text-justify"> {{ material.description }} </p>
+                <p class="card-text text-muted text-justify"> {{ product.description }} </p>
               </div>
             </div>
           </div>
@@ -67,8 +90,8 @@
       <!-- Images -->
       <div class="col-lg-5">
         <div class="card shadow-lg my-5">
-          <a href="{{ material.photo_main.url }}" data-lightbox="material-images" >
-            <img src="{{ material.photo_main.url }}" alt="" class="fotos card-img-top">
+          <a href="{{ product.photo_main.url }}" data-lightbox="product-images" >
+            <img src="{{ product.photo_main.url }}" alt="" class="fotos card-img-top">
           </a>
           {% if thumbnails %}
           <div class="row tumbs card-deck m-3">  
@@ -76,7 +99,7 @@
             {% for thumbnail in thumbnails %}
               {% if thumbnail %}
                 <div class="col-md-3 col-sm-12">
-                  <a href="{{ thumbnail.url }}" data-lightbox="material-images">
+                  <a href="{{ thumbnail.url }}" data-lightbox="product-images">
                     <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
                 </a>
                 </div>
