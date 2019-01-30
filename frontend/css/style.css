@@ -28,6 +28,9 @@
           border: solid;
           border-color: white; }
 
+#realizations .card-img-top {
+  height: 17rem; }
+
 #info .container {
   min-height: 300px; }
 #info p {
@@ -71,6 +74,8 @@
 
 #realizations-listings .card {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+  #realizations-listings .card .card-img-top {
+    min-height: 15rem; }
 
 #search-form .home-search {
   background: rgba(255, 255, 255, 0.9);
