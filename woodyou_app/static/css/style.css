@@ -27,11 +27,18 @@
           max-width: 250px;
           border: solid;
           border-color: white; }
+ 
+#home-icons .img-fluid{
+  max-width: 13rem;
+}
 
 #info .container {
   min-height: 300px; }
 #info p {
   text-align: justify; }
+
+#realizations .card-img-top {
+  height: 17rem; }
 
 #materials-header {
   background: url(../img/background.jpg);
@@ -51,7 +58,7 @@
 #materials .materials-preview {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
   #materials .materials-preview .card-img-top {
-    min-height: 8rem; }
+    min-height: 14rem; }
 
 #realizations-header {
   background: url(../img/background.jpg);
@@ -71,6 +78,8 @@
 
 #realizations-listings .card {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+  #realizations-listings .card .card-img-top {
+    height: 16rem; }
 
 #search-form .home-search {
   background: rgba(255, 255, 255, 0.9);
@@ -86,7 +95,7 @@
 #used-products .materials-preview {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
   #used-products .materials-preview .card-img-top {
-    min-height: 8rem; }
+    min-height: 14rem; }
 
 #calculate-header {
   background: url(../img/background.jpg);

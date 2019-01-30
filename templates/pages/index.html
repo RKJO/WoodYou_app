@@ -30,12 +30,11 @@
 
 <!-- About Section -->
 <section id="info">
-  <div class="container mt-5">
+  <div class="container mt-5 d-flex align-items-center">
     <div class="row ">
-      <div class="col-xs-12">
-          <p class="text">Zapraszamy do skorzystania z naszej oferty, wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy.Działamy na terenie Warszawy i okolic.</p>
+      <div class="col-xs-12 ">
+          <p class='h5'>Zapraszamy do skorzystania z naszej oferty, wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic.</p>
           </div>
-        <!-- <p class="text">Modrzew syberyjski, bangkirai i deska kompozytowa 4DECK to główne produkty z naszej oferty. Własna produkcja i bezpośredni import pozwalają nam zaoferować szeroką gamę produktów w wielu profilach i gatunkach. W Global Biznes znajdziesz deski tarasowe, deski elewacyjne, deski kompozytowe WPC, w stałej ofercie dostępne od ręki są również takie produkty jak tarcica obrzynana i nieobrzynana, fryzy na kantówkę okienną, blaty drewniane, drewno konstrukcyjne a także wkręty, impregnaty i oleje do drewna. Dzięki szerokiej gamie dostępnych gatunków drewna egzotycznego oraz rodzimego takich jak modrzew syberyjski, sosna, bangkirai, keruing, kempas, massaranduba, merbau, garapa, ipe/lapacho, cumaru, mukulungu, thermo drewno, tatajuba, meranti, cedr czerwony czy okoume jesteśmy w stanie zrealizować niemalże każde zamówienie. Obsługujemy zarówno klientów detalicznych, wykonawców, architektów, deweloperów i firmy handlowe. Nasz główny magazyn znajduje się w Koczargach Nowych pod Warszawą, gdzie bezpośrednio mogą Państwo obejrzeć i zakupić towar. Realizujemy wysyłkę naszych produktów na terenie całego świata.</p> -->
       </div>
     </div>
   </div>
@@ -46,49 +45,58 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-4 text-center">
-          <i class="fas fa-cog fa-3x mb-2"></i>
-          <h3>Turning Gears</h3>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+          <img src="{% static '/img/EKO.jpg' %}" alt="" class="img-fluid mb-3">
         </div>
         <div class="col-md-4 mb-4 text-center">
-          <i class="fas fa-cloud fa-3x mb-2"></i>
-          <h3>Sending Data</h3>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, veniam.</p>
+          <img src="{% static '/img/fsc.jpeg' %}" alt="" class="img-fluid mb-3">
         </div>
         <div class="col-md-4 mb-4 text-center p-3">
-          <i class="fas fa-tools fa-3x mb-2"></i>
-          <h3>Making Money</h3>
-          <p class="text-justify">Powierzone zlecenia wykonujemy kompleksowo. Na życzenie klienta wykonamy projekt, przeliczymy potrzebne ilość surowca i wykonamy wszystkie niezbędne prace budowlane.</p>
+          <i class="fas fa-tools fa-9x mt-4"></i>
         </div>
       </div>
+      <div class="row">
+          <div class="col-md-4 mb-4 text-center">
+            <p class="text-justify">Przy realizacji zleceń, zwracamy szczególną uwagę na środowisko naturalne. Wykorzystujemy materiał pochodzenia naturalnego. Segregujemy lub wykorzystujemy ponownie powstałe odpady. Kontrolujemy aby nie zaburzyć ekosystemu na którym prowadzimy pracę.</p>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <p class="text-justify">Dbamy o pochodzenie drewna, nasi wszyscy dostawcy posiadają certyfikat świadczący o legalnym pozyskaniu surowca.</p>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <p class="text-justify">Powierzone zlecenia wykonujemy kompleksowo. Na życzenie klienta wykonamy projekt, przeliczymy potrzebne ilość surowca i wykonamy wszystkie niezbędne prace budowlane.</p>
+          </div>
+        </div>
     </div>
   </section>
 
 <!-- Services -->
 <section class="content-section  text-center" id="services">
   <div class="container">
-    <div class="jumbotron text-center bg-secondary text-white py-3">
-      <h1 class="h3">Nasze ostatnie realizacje:</h1>
-    </div>
+    <a href="{% url 'realizacje' %}">
+      <div class="jumbotron text-center bg-secondary text-white mb-0 py-2">
+        <h1 class="h3 m-0">Nasze ostatnie realizacje:</h1>
+      </div>
+    </a>
   </div>
 </section>
 
  <!-- Realizations -->
- <section id="listings" class="py-5">
+ <section id="realizations" class="py-5">
     <div class="container">
       <div class="row">
         {% if realizations %}
           {% for realization in realizations %}
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview">
+          <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card realization-preview shadow">
                 <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
-                <div class="card-img-overlay">
-                  <h2>
-                    <span class="badge badge-secondary text-white">{{realization.cost | intcomma }} zł</span>
-                  </h2>
-                </div>
+                <a href="{% url 'realizacja' realization.id %}">
+                  <div class="card-img-overlay">
+                    <h2>
+                      <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
+                    </h2>
+                  </div>
+                </a>
                 <div class="card-body">
-                  <div class="listing-heading text-center">
+                  <div class="realization-heading text-center">
                     <h4 class="text-primary">{{realization.name}}</h4>
                     <p>
                         <i class="fas fa-map-marker text-secondary"></i> {{realization.location}}</p>
@@ -96,26 +104,42 @@
                   <hr>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-th-large"></i> Powierzchnia:</div>
+                      <i class="fas fa-th-large"></i> Powierzchnia:
+                    </div>
                       <div class="col-6 text-right">{{realization.area}} m<SUP>2</SUP> </div>
                     </div>
                   <div class="row py-2 text-secondary">
-                    <div class="col-12">
-                      <i class="fas fa-tree"></i> Rodzaj drewna:</div>
-                      <div class="col-12 text-right">{{realization.used_wood}}</div>
+                    <div class="col-5 col-xl-5 col-lg-12">
+                      <i class="fas fa-tree"></i> Rodzaj drewna:
+                    </div>
+                      <div class="col-7 col-xl-7 col-lg-12 text-right">{{realization.used_wood}}</div>
                   </div>
                   <hr>
                   <div class="row text-secondary pb-2">
-                    <div class="col-6">
+                    <div class="col">
                       <i class="fas fa-clock"></i> {{realization.realization_date}}</div>
                   </div>
                   <hr>
-                  <a href="realization.html" class="btn btn-secondary btn-block">Więcej informacji</a>
+                  <div class="btn btn-secondary btn-block">Więcej informacji</div>
                 </div>
               </div>
             </div>
           {% endfor %}
         {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+        <div class="row box-shadow">
+          <div class="col-7 d-flex align-items-center">
+            <div class="text-justify">
+                <p class='h5'>Dzięki bliskiej współpracy jednego z największych importerów drewna w Polsce, Global-Biznes sp. z o.o., mamy bezpośredni dostęp do najwyższej jakości surowca w najbardziej konkurencyjnej cenie na rynku.</p></div>
+          </div>
+          <div class="col-5">
+            <img src="{% static '/img/global.jpeg' %}" alt="" class="img-fluid mb-3">
+          </div>
       </div>
     </div>
   </section>

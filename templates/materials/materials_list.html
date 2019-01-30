@@ -11,9 +11,9 @@
     <div class="dark-overlay py-5">
       <div class="container py-3">
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col">
               <div class="text-center text-white">
-                    <h1><strong>Materiały</strong></h1>
+                    <h1 class="display-5">Materiały</h1>
               </div>
             </div>
           </div>
@@ -52,14 +52,16 @@
           {% if product.category_name == product_category %}
             
               <div class="col-md-4 col-lg-3 mb-4">
-                <a href="bankirai.html">
+                <a href="{% url 'produkt' product.name %}">
                   <div class="card materials-preview">
                     <img class="card-img-top" src="{{product.photo_main.url}}" alt="">
                     <div class="card-img-overlay">
                         <span class="badge badge-secondary text-white">
                           <div class="price">
                             <div class='m-1'>{{product.price_lm}} PLN / mb</div>
+                            {% if product.price_m2 %}
                             <div>{{product.price_m2}} PLN / m<sup>2</sup></div>
+                            {% endif %}
                           </div>
                         </span>
                     </div>
@@ -90,7 +92,7 @@
         {% for material in materials %}
           {% if material.category_name == material_category %}
               <div class="col-md-4 col-lg-3 mb-4">
-                <a href="bankirai.html">
+                <a href="{% url 'material' material.name %}">
                   <div class="card materials-preview">
                     <img class="card-img-top" src="{{material.photo_main.url}}" alt="">
                     <div class="card-img-overlay">
@@ -101,8 +103,6 @@
                         </span>
                     </div>
                     <div class="card-body">
-                      <!-- <div class="listing-heading text-center">
-                        <span class="text-secondary">Bankirai</span> -->
                       <div class="btn btn-secondary btn-block">{{material.name}}</div>
                     </div>
                   </div>

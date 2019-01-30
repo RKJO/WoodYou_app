@@ -13,7 +13,6 @@ class RealizationsListView(View):
         queryset_list = Ralization.objects.order_by('-realization_date')
         used_woods = Ralization.objects.order_by('-realization_date')
 
-
         # powierzchnia_od
         if 'powierzchnia_od' in request.GET:
             area_from = request.GET['powierzchnia_od']
