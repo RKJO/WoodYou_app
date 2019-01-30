@@ -10,7 +10,7 @@ class Product(AddAndCreate):
     category_name = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, verbose_name='Kategoria')
     name = models.CharField('Nazwa produktu', max_length=100)
     price_lm = models.DecimalField('Cena mb (PLN)', max_digits=5, decimal_places=2)
-    price_m2 = models.DecimalField(verbose_name=u'Cena m² (PLN)', max_digits=5, decimal_places=2)
+    price_m2 = models.DecimalField(verbose_name=u'Cena m² (PLN)', max_digits=5, decimal_places=2, blank=True, null=True)
     thickness = models.IntegerField('Gruboość (mm)')
     width = models.IntegerField('Szerokość (mm)')
     weight = models.DecimalField('Waga', max_digits=5, decimal_places=2, blank=True, null=True)
