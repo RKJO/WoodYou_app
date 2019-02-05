@@ -177,9 +177,9 @@
               {% if product %}  
               <div class="col-md-4 col-lg-3 mb-4">
                 {% if product.price %}
-                  <a href="{% url 'material' product.name %}">
+                  <a href="{% url 'material' product.id %}">
                 {% else %}
-                  <a href="{% url 'produkt' product.name %}">
+                  <a href="{% url 'produkt' product.id %}">
                 {% endif %}
                   <div class="card materials-preview">
                     <img class="card-img-top" src="{{product.photo_main.url}}" alt="">

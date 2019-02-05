@@ -12,7 +12,7 @@ class MaterialsListView(View):
         products_categories = ProductCategory.objects.order_by('id')
         materials_categories = MaterialCategory.objects.order_by('id')
         materials = Material.objects.order_by('price')
-        products = Product.objects.order_by('price_m2')
+        products = Product.objects.order_by('price_lm')
 
         ctx = {
             'materials' : materials,
@@ -25,9 +25,9 @@ class MaterialsListView(View):
 
 class ProductDetailView(View):
 
-    def get(self, request, product_name):
+    def get(self, request, product_id):
 
-        product = get_object_or_404(Product, name=product_name)
+        product = get_object_or_404(Product, pk=product_id)
         photos = [product.photo_2, product.photo_3, product.photo_4, product.photo_5]
 
         context = {
@@ -39,9 +39,9 @@ class ProductDetailView(View):
 
 class MaterialDetailView(View):
 
-    def get(self, request, material_name):
+    def get(self, request, material_id):
 
-        material = get_object_or_404(Material, name=material_name)
+        material = get_object_or_404(Material, pk=material_id)
         photos = [material.photo_2, material.photo_3 ,material.photo_4, material.photo_5]
 
         context = {
