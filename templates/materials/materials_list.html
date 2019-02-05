@@ -52,7 +52,7 @@
           {% if product.category_name == product_category %}
             
               <div class="col-md-4 col-lg-3 mb-4">
-                <a href="{% url 'produkt' product.name %}">
+                <a href="{% url 'produkt' product.id %}">
                   <div class="card materials-preview">
                     <img class="card-img-top" src="{{product.photo_main.url}}" alt="">
                     <div class="card-img-overlay">
@@ -92,7 +92,7 @@
         {% for material in materials %}
           {% if material.category_name == material_category %}
               <div class="col-md-4 col-lg-3 mb-4">
-                <a href="{% url 'material' material.name %}">
+                <a href="{% url 'material' material.id %}">
                   <div class="card materials-preview">
                     <img class="card-img-top" src="{{material.photo_main.url}}" alt="">
                     <div class="card-img-overlay">
