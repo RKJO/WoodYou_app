@@ -6,144 +6,154 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-
 <!-- HOME SECTION -->
-<header id="home-section">
-  <div class="dark-overlay">
-    <div class="container">
-        <div class="row align-self-center">
-          <div class="col-lg-8 align-self-center">
-            <div class="text-center text-white">
-                  <h1><strong> Wood You</strong></h1>
-                  <h2>Tarasy i zadaszenia <br>dla Twojego domu</h2>
-            </div>
-          </div>
-
-          <div class="col-lg-4 d-none d-lg-block col-md-12 align-self-center">
-                <img src="{% static '/img/profile_picture.png' %}" alt="" class="img-fluid rounded-circle home-img">
-          </div>
+<div class="section section-header" id="home-section">
+    <div class="parallax filter">
+        <div class="image" >
         </div>
-      </div>
-  </div>
-
-</header>
-
-<!-- About Section -->
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="title-area">
-                <h2>Nasze Usługi</h2>
-                <div class="separator separator-secondary">✻</div>
-                <p class="description">Zapraszamy do skorzystania z naszej oferty, wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="info-icon">
-                    <div class="icon text-center">
-                      <img src="{% static '/img/EKO.jpg' %}" alt="" class="img-fluid mb-4">
+        <div class="container vertical-center">
+            <div class="content">
+                <div class="row align-self-center">
+                    <div class="col-lg-8 align-self-center">
+                      <div class="text-center text-white">
+                            <h1 class="display-3"> Wood You</h1>
+                            <h2 class="display-4">Tarasy i zadaszenia <br>dla Twojego domu</h2>
+                      </div>
                     </div>
-                    <!-- <h3>Sales</h3> -->
-                    <p class="description">Przy realizacji zleceń, zwracamy szczególną uwagę na środowisko naturalne. Wykorzystujemy materiał pochodzenia naturalnego. Segregujemy lub wykorzystujemy ponownie powstałe odpady. Kontrolujemy aby nie zaburzyć ekosystemu na którym prowadzimy pracę.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-icon">
-                    <div class="icon text-center">
-                      <img src="{% static '/img/fsc.jpeg' %}" alt="" class="img-fluid mb-3">
+          
+                    <div class="col-lg-4 d-none d-lg-block col-md-12 align-self-center">
+                          <img src="{% static '/img/profile_picture.png' %}" alt="" class="img-fluid rounded-circle home-img">
                     </div>
-                    <!-- <h3>Content</h3> -->
-                    <p class="description">Dbamy o pochodzenie drewna, nasi wszyscy dostawcy posiadają certyfikat świadczący o legalnym pozyskaniu surowca.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-icon">
-                    <div class="icon">
-                      <i class="fas fa-tools fa-3x my-4"></i>
-                    </div>
-                    <!-- <h3>Music</h3> -->
-                    <p class="description">Powierzone zlecenia wykonujemy kompleksowo. Na życzenie klienta wykonamy projekt, przeliczymy potrzebne ilość surowca i wykonamy wszystkie niezbędne prace budowlane.</p>
-                </div>
+                  </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Services -->
-<section class="content-section  text-center" id="services">
-  <div class="container">
-    <a href="{% url 'realizacje' %}">
-      <div class="jumbotron text-center bg-secondary text-white mb-0 py-2">
-        <h1 class="h3 m-0">Nasze ostatnie realizacje:</h1>
-      </div>
-    </a>
-  </div>
-</section>
+<div class="main main-raised">
 
- <!-- Realizations -->
- <section id="realizations" class="py-5">
-    <div class="container">
-      <div class="row">
-        {% if realizations %}
-          {% for realization in realizations %}
-          <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card realization-preview shadow">
-                <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
-                <a href="{% url 'realizacja' realization.id %}">
-                  <div class="card-img-overlay">
-                    <h2>
-                      <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
-                    </h2>
+  <!-- About Section -->
+  <div class="section">
+      <div class="container">
+          <div class="row">
+              <div class="title-area">
+                  <h2>Nasze Usługi</h2>
+                  <div class="separator separator-secondary">✻</div>
+                  <p class="description">Zapraszamy do skorzystania z naszej oferty, wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic.</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="info-icon">
+                      <div class="icon text-center">
+                        <img src="{% static '/img/EKO.jpg' %}" alt="" class="img-fluid mb-4">
+                      </div>
+                      <p class="description">Przy realizacji zleceń, zwracamy szczególną uwagę na środowisko naturalne. Wykorzystujemy materiał pochodzenia naturalnego. Segregujemy lub wykorzystujemy ponownie powstałe odpady. Kontrolujemy aby nie zaburzyć ekosystemu na którym prowadzimy pracę.</p>
                   </div>
-                </a>
-                <div class="card-body">
-                  <div class="realization-heading text-center">
-                    <h4 class="text-primary">{{realization.name}}</h4>
-                    <p>
-                        <i class="fas fa-map-marker text-secondary"></i> {{realization.location}}</p>
+              </div>
+              <div class="col-md-4">
+                  <div class="info-icon">
+                      <div class="icon text-center">
+                        <img src="{% static '/img/fsc.jpeg' %}" alt="fsc" class="img-fluid mb-4">
+                      </div>
+                      <p class="description">Dbamy o pochodzenie drewna, nasi wszyscy dostawcy posiadają certyfikat świadczący o legalnym pozyskaniu surowca.</p>
                   </div>
-                  <hr>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-th-large"></i> Powierzchnia:
+              </div>
+              <div class="col-md-4">
+                  <div class="info-icon">
+                      <div class="icon text-center">
+                        <img src="{% static '/img/sawhammer.png' %}" alt="" class="img-fluid mb-4">
+                      </div>
+                      <p class="description">Powierzone zlecenia wykonujemy kompleksowo. Na życzenie klienta wykonamy projekt, przeliczymy potrzebne ilość surowca i wykonamy wszystkie niezbędne prace budowlane.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Realizations -->
+  <div class="section" id='realizations'>
+    <div class="parallax filter filter-color-black">
+      <div class="image" id='realizations-image'>
+      </div>
+      <div class="container" id="services">
+        <div class="row">
+            <div class="title-area">
+              <a href="{% url 'realizacje' %}">
+                <h2 class='text-white'>Nasze ostatnie realizacje:</h2>
+                <!-- <div class="jumbotron text-center bg-secondary text-white py-2">
+                  <h1 class="h3 m-0">Nasze ostatnie realizacje:</h1>
+                </div> -->
+              </a>
+                <p class="description">We promise you a new look and more importantly, a new attitude. We build that by getting to know you, your needs and creating the best looking clothes.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row justify-content-center">
+              {% if realizations %}
+                {% for realization in realizations %}
+                <div class="col-md-8 col-lg-4 mb-4">
+                    <div class="card realization-preview shadow">
+                      <img class="card-img-top" src="{{ realization.photo_main.url }}" alt="">
+                      <a href="{% url 'realizacja' realization.id %}">
+                        <div class="card-img-overlay">
+                          <h2>
+                            <span class="badge badge-secondary text-white">{{realization.cost | intcomma}} zł</span>
+                          </h2>
+                        </div>
+                      </a>
+                      <div class="card-body">
+                        <div class="realization-heading text-center">
+                          <h4 class="text-primary">{{realization.name}}</h4>
+                          <p>
+                              <i class="fas fa-map-marker text-secondary"></i> {{realization.location}}</p>
+                        </div>
+                        <hr>
+                        <div class="row py-2 text-secondary">
+                          <div class="col-6">
+                            <i class="fas fa-th-large"></i> Powierzchnia:
+                          </div>
+                            <div class="col-6 text-right">{{realization.area}} m<SUP>2</SUP> </div>
+                          </div>
+                        <div class="row py-2 text-secondary">
+                          <div class="col-5 col-xl-5 col-lg-12">
+                            <i class="fas fa-tree"></i> Rodzaj drewna:
+                          </div>
+                            <div class="col-7 col-xl-7 col-lg-12 text-right">{{realization.used_wood}}</div>
+                        </div>
+                        <hr>
+                        <div class="row text-secondary pb-2">
+                          <div class="col">
+                            <i class="fas fa-clock"></i> {{realization.realization_date}}</div>
+                        </div>
+                        <hr>
+                        <div class="btn btn-secondary btn-block">Więcej informacji</div>
+                      </div>
                     </div>
-                      <div class="col-6 text-right">{{realization.area}} m<SUP>2</SUP> </div>
-                    </div>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-5 col-xl-5 col-lg-12">
-                      <i class="fas fa-tree"></i> Rodzaj drewna:
-                    </div>
-                      <div class="col-7 col-xl-7 col-lg-12 text-right">{{realization.used_wood}}</div>
                   </div>
-                  <hr>
-                  <div class="row text-secondary pb-2">
-                    <div class="col">
-                      <i class="fas fa-clock"></i> {{realization.realization_date}}</div>
-                  </div>
-                  <hr>
-                  <div class="btn btn-secondary btn-block">Więcej informacji</div>
-                </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+      <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-11">
+              <div class="title-area">
+                  <h1 class="display-5">Dzięki bliskiej współpracy jednego z największych importerów drewna w Polsce, Global-Biznes sp. z o.o., mamy bezpośredni dostęp do najwyższej jakości surowca w najbardziej konkurencyjnej cenie na rynku.</h1>
               </div>
             </div>
-          {% endfor %}
-        {% endif %}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-        <div class="row box-shadow">
-          <div class="col-7 d-flex align-items-center">
-            <div class="text-justify">
-                <p class='h5'>Dzięki bliskiej współpracy jednego z największych importerów drewna w Polsce, Global-Biznes sp. z o.o., mamy bezpośredni dostęp do najwyższej jakości surowca w najbardziej konkurencyjnej cenie na rynku.</p></div>
-          </div>
-          <div class="col-5">
-            <img src="{% static '/img/global.jpeg' %}" alt="" class="img-fluid mb-3">
+            <div class="col-lg-5 col-md-10">
+              <img src="{% static '/img/global.jpeg' %}" alt="global-biznes" class="img-fluid mb-3">
+            </div>
           </div>
       </div>
-    </div>
-  </section>
-
+  </div>
+</div>
   {% endblock%}

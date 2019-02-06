@@ -7,88 +7,93 @@
 {% block content %}
 
 <!-- HOME SECTION -->
-<header id="materials-header">
-    <div class="dark-overlay py-5">
-      <div class="container py-3">
+
+<div class="section section-header page-header">
+    <div class="parallax filter">
+        <div class="image"></div>
+        <div class="container align-self-center">
           <div class="row">
             <div class="col">
               <div class="text-center text-white">
-                <h1>{{ material.name }}</h1>
-                <h4>{{material.category_name}}</h4>
+                <h1 class="display-4">{{ material.name }}</h1>
+                <h4 class="display-5">{{material.category_name}}</h4>
               </div>
             </div>
           </div>
         </div>
     </div>
-  </header>
+</div>
 
-   <!-- Breadcrumb -->
+<div class="main main-raised">
+
+  <!-- Breadcrumb -->
 <section id="bc" class="mt-3">
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb shadow">
-        <li class="breadcrumb-item">
-          <a href="{% url 'index' %}">
-            <i class="fas fa-home text-secondary"></i> Strona główna</a>
-        </li>
-        <li class="breadcrumb-item">
-          <a href="{% url 'materialy' %}">
-            <i class="text-secondary"></i> Materialy</a>
-        </li>
-        <li class="breadcrumb-item active"> {{material.name}}</li>
-      </ol>
-    </nav>
-  </div>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb shadow">
+      <li class="breadcrumb-item">
+        <a href="{% url 'index' %}">
+          <i class="fas fa-home text-secondary"></i> Strona główna</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'materialy' %}">
+          <i class="text-secondary"></i> Materialy</a>
+      </li>
+      <li class="breadcrumb-item active"> {{material.name}}</li>
+    </ol>
+  </nav>
+</div>
 </section>
 
 <section id='material-info' class="mt-2">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7">
-        <div class="card shadow-sm my-5">
-          <div class="card-header">
-            <div class="row py-1 text-secondary">
-              <div class="col-6">
-                <i class="far fa-money-bill-alt"></i> Cena:</div>
-              <div class="col-6 text-right">{{ material.price }} zł/op</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="row pb-2">
-              <div class="col ">
-                <span class="text-secondary"><i class="fas fa-file-alt mb-4"></i> Opis:</span> 
-                <p class="card-text text-muted text-justify"> {{ material.description }} </p>
-              </div>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="card shadow-sm my-2">
+        <div class="card-header">
+          <div class="row py-1 text-secondary">
+            <div class="col-6">
+              <i class="far fa-money-bill-alt"></i> Cena:</div>
+            <div class="col-6 text-right">{{ material.price }} zł/op</div>
           </div>
         </div>
-      </div>
-
-      <!-- Images -->
-      <div class="col-lg-5">
-        <div class="card shadow-lg my-5">
-          <a href="{{ material.photo_main.url }}" data-lightbox="material-images" >
-            <img src="{{ material.photo_main.url }}" alt="" class="fotos card-img-top">
-          </a>
-          {% if thumbnails %}
-          <div class="row tumbs card-deck m-3">  
-
-            {% for thumbnail in thumbnails %}
-              {% if thumbnail %}
-                <div class="col-md-3 col-sm-12">
-                  <a href="{{ thumbnail.url }}" data-lightbox="material-images">
-                    <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
-                </a>
-                </div>
-              {%endif%}
-            {% endfor %}
-            
+        <div class="card-body">
+          <div class="row pb-2">
+            <div class="col ">
+              <span class="text-secondary"><i class="fas fa-file-alt mb-4"></i> Opis:</span> 
+              <p class="card-text text-muted text-justify"> {{ material.description }} </p>
+            </div>
           </div>
-          {% endif %}
         </div>
       </div>
     </div>
-  </div>  
+
+    <!-- Images -->
+    <div class="col-lg-5">
+      <div class="card shadow-lg p-1">
+        <a href="{{ material.photo_main.url }}" data-lightbox="material-images" >
+          <img src="{{ material.photo_main.url }}" alt="" class="fotos card-img-top">
+        </a>
+        {% if thumbnails %}
+        <div class="row tumbs card-deck m-3 align-self-center">  
+
+          {% for thumbnail in thumbnails %}
+            {% if thumbnail %}
+              <div class="col-md-3 col-sm-6 mb-2 " >
+                <a href="{{ thumbnail.url }}" data-lightbox="material-images">
+                  <img src="{{ thumbnail.url }}" alt="" class="img-thumbnail">
+              </a>
+              </div>
+            {%endif%}
+          {% endfor %}
+          
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>  
 </section>
+</div>
 
 {% endblock %}
