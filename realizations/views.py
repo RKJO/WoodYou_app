@@ -1,13 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 from django.template.response import TemplateResponse
 from django.views import View
+from django.core.paginator import Paginator
 from .models import Ralization
 from materials.models import Product
-from django.core.paginator import Paginator
+from .form import RealizationSearchForm
 
 class RealizationsListView(View):
 
     def get(self, request):
+
+        if request.GET:
+            form = RealizationSearchForm(initial={
+            'powierzchnia_od':request.GET['powierzchnia_od'],'powierzchnia_do':request.GET['powierzchnia_do'],
+            'rodzaj_drewna':request.GET['rodzaj_drewna'],
+            })
+        else:
+            form = RealizationSearchForm()
 
         # realizations
         queryset_list = Ralization.objects.order_by('-realization_date')
@@ -35,10 +44,10 @@ class RealizationsListView(View):
         page = request.GET.get('page')
         paged_realizations = paginator.get_page(page)
 
+
         context = {
-            'used_woods': {product.used_wood for product in used_woods},
+            'form': form,
             'realizations' : paged_realizations,
-            'values' : request.GET,
         }        
 
         return TemplateResponse(request, 'realizations/realizations_list.html', context)

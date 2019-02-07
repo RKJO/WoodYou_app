@@ -2,7 +2,7 @@
 
 {% load static %}
 {% load humanize %}
-
+{% load crispy_forms_tags %}
 {% block title %} | Realizacje{% endblock %}
 
 {% block content %}
@@ -36,20 +36,23 @@
                       <!-- Form Row 1 -->
                       <div class="form-row">     
                         <div class="col-md-6 mb-3">
-                          <label class="sr-only">Powierzchnia od:</label>
-                          <input type="text" name="powierzchnia_od" class="form-control" placeholder="Powierzchnia od:" value="{{ values.powierzchnia_od }}" >
+                          <!-- <label class="sr-only">Powierzchnia od:</label> -->
+                          {{form.powierzchnia_od|as_crispy_field}}
+                          <!-- <input type="text" name="powierzchnia_od" class="form-control" placeholder="Powierzchnia od:" value="{{ values.powierzchnia_od }}" > -->
                         </div>
 
                         <div class="col-md-6 mb-3">
-                          <label class="sr-only">Powierzchnia do:</label>
-                          <input type="text" name="powierzchnia_do" class="form-control" placeholder="Powierzchnia do:" value="{{ values.powierzchnia_do }}">
+                          <!-- <label class="sr-only">Powierzchnia do:</label> -->
+                          {{form.powierzchnia_do|as_crispy_field}}
+                          <!-- <input type="text" name="powierzchnia_do" class="form-control" placeholder="Powierzchnia do:" value="{{ values.powierzchnia_do }}"> -->
                         </div>
                       </div>
                       <!-- Form Row 2 -->
                       <div class="form-row">
                         <div class="col-md-12 mb-3">
-                          <label class="sr-only">Rodzaj drewna</label>
-                          <select name="rodzaj_drewna" class="form-control">
+                          <!-- <label class="sr-only">Rodzaj drewna</label> -->
+                          {{form.rodzaj_drewna|as_crispy_field}}
+                          <!-- <select name="rodzaj_drewna" class="form-control">
                             <option selected="true" disabled="disabled">Rodzaj drewna</option>
                             {% for used_wood in used_woods %}
                               <option value="{{ used_wood }}"
@@ -58,7 +61,7 @@
                               {% endif %}
                               >{{ used_wood.name }}</option>
                             {% endfor %}
-                          </select>
+                          </select> -->
                         </div>
                       </div>
                       <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>
