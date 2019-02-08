@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
-{% block title %} | {{ product.name }}{% endblock %}
+{% block extra_head_tags %}
+<meta property="og:title" content="Wood You Warszawa - {{ product.name }} {{product.category_name}}">
+<meta property="og:description" content="{{ product.description }}">
+<meta property="og:image" content="{% static '/img/logo1.png' %}">
+<meta property="og:url" content="{% url 'produkt' product.id %}">
+{% endblock %}
+{% block title %}{{ product.name }} {{product.category_name}}{% endblock %}
 
 {% block content %}
 

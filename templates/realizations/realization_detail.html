@@ -2,8 +2,13 @@
 
 {% load static %}
 {% load humanize %}
-
-{% block title %} | {{ realization.name }}{% endblock %}
+{% block extra_head_tags %}
+<meta property="og:title" content="Wood You Warszawa - Taras {{ realization.name }} {{realization.location }}">
+<meta property="og:description" content="{{ realization.description }}">
+<meta property="og:image" content="{% static '/img/logo1.png' %}">
+<meta property="og:url" content="{% url 'realizacja' realization.id %}">
+{% endblock %}
+{% block title %}Taras {{ realization.name }}{% endblock %}
 
 {% block content %}
 

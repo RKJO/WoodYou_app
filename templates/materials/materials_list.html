@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
-{% block title %} | Materiały{% endblock %}
+{% block extra_head_tags %}
+<meta property="og:title" content="Wood You Warszawa - Materiały deski tarasowe i kompozytowe">
+<meta property="og:description" content="Zapraszamy do skorzystania z naszej oferty, wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic.">
+<meta property="og:image" content="{% static '/img/logo1.png' %}">
+<meta property="og:url" content="{% url 'materialy' %}">
+{% endblock %}
+{% block title %}Materiały deski tarasowe i kompozytowe{% endblock %}
 
 {% block content %}
 

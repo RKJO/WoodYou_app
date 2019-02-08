@@ -3,7 +3,13 @@
 {% load static %}
 {% load humanize %}
 {% load crispy_forms_tags %}
-{% block title %} | Realizacje{% endblock %}
+{% block extra_head_tags %}
+<meta property="og:title" content="Wood You Warszawa - Realizacje tarasów">
+<meta property="og:description" content="Wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic">
+<meta property="og:image" content="{% static '/img/logo1.png' %}">
+<meta property="og:url" content="{% url 'realizacje' %}">
+{% endblock %}
+{% block title %}Realizacje tarasów{% endblock %}
 
 {% block content %}
 
@@ -35,33 +41,17 @@
                     <form action="{% url 'realizacje' %}">
                       <!-- Form Row 1 -->
                       <div class="form-row">     
-                        <div class="col-md-6 mb-3">
-                          <!-- <label class="sr-only">Powierzchnia od:</label> -->
+                        <div class="col-md-6 mb-3 .area">
                           {{form.powierzchnia_od|as_crispy_field}}
-                          <!-- <input type="text" name="powierzchnia_od" class="form-control" placeholder="Powierzchnia od:" value="{{ values.powierzchnia_od }}" > -->
                         </div>
-
-                        <div class="col-md-6 mb-3">
-                          <!-- <label class="sr-only">Powierzchnia do:</label> -->
+                        <div class="col-md-6 mb-3 .area">
                           {{form.powierzchnia_do|as_crispy_field}}
-                          <!-- <input type="text" name="powierzchnia_do" class="form-control" placeholder="Powierzchnia do:" value="{{ values.powierzchnia_do }}"> -->
                         </div>
                       </div>
                       <!-- Form Row 2 -->
                       <div class="form-row">
                         <div class="col-md-12 mb-3">
-                          <!-- <label class="sr-only">Rodzaj drewna</label> -->
                           {{form.rodzaj_drewna|as_crispy_field}}
-                          <!-- <select name="rodzaj_drewna" class="form-control">
-                            <option selected="true" disabled="disabled">Rodzaj drewna</option>
-                            {% for used_wood in used_woods %}
-                              <option value="{{ used_wood }}"
-                              {% if used_wood.name == values.rodzaj_drewna %}
-                                selected
-                              {% endif %}
-                              >{{ used_wood.name }}</option>
-                            {% endfor %}
-                          </select> -->
                         </div>
                       </div>
                       <button class="btn btn-secondary btn-block mt-4" type="submit">Wyszukaj</button>

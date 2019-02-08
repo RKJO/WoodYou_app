@@ -3,8 +3,13 @@
 {% load static %}
 {% load humanize %}
 {% load crispy_forms_tags %}
-
-{% block title %} | Kalkulator{% endblock %}
+{% block extra_head_tags %}
+<meta property="og:title" content="Wood You Warszawa - Kalkulator zabudowy tarasu">
+<meta property="og:description" content="Wykonujemy tarasy drewniane lub kompozytowe. Posiadamy szeroką wiedzę techniczną i wieloletnie doświadczenie dzięki czemu świadczymy usługi na najwyższym poziomie. Zapraszamy do kontaktu, doradzimy, zaprojektujemy i zbudujemy. Działamy na terenie Warszawy i okolic">
+<meta property="og:image" content="{% static '/img/logo1.png' %}">
+<meta property="og:url" content="{% url 'kalkulator' %}">
+{% endblock %}
+{% block title %}Kalkulator zabudowy tarasu{% endblock %}
 
 {% block content %}
 
